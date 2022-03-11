@@ -39,10 +39,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Control",
+"class": "LoadingScreen",
+"language": "GDScript",
+"path": "res://Modules/SceneManagement/LoadingScreen.gd"
+}, {
 "base": "PanelContainer",
 "class": "LogContainer",
 "language": "GDScript",
 "path": "res://addons/hyperlog/log_container.gd"
+}, {
+"base": "Node",
+"class": "Splash",
+"language": "GDScript",
+"path": "res://Modules/godot_splash_screens/splash/Splash.gd"
 }, {
 "base": "Control",
 "class": "Tracker",
@@ -86,7 +96,9 @@ _global_script_class_icons={
 "DialogicDefinitionsUtil": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"LoadingScreen": "",
 "LogContainer": "",
+"Splash": "",
 "Tracker": "",
 "TrackerAngle": "",
 "TrackerBar": "",
@@ -99,11 +111,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Squiggles 3D First Person Game"
+run/main_scene="res://Scenes/FSM/GameLaunchFSM.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 HyperLog="*res://addons/hyperlog/hyperlog.tscn"
+SceneManagement="*res://Modules/SceneManagement/SceneManagement.gd"
 
 [debug]
 

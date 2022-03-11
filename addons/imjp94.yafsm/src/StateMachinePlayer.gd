@@ -14,7 +14,7 @@ enum ProcessMode {
 	MANUAL
 }
 
-export(Resource) var state_machine # StateMachine being played 
+export(Resource) var state_machine # StateMachine being played
 export(bool) var active = true setget set_active # Activeness of player
 export(bool) var autostart = true # Automatically enter Entry state on ready if true
 export(ProcessMode) var process_mode = ProcessMode.IDLE setget set_process_mode # ProcessMode of player
@@ -102,7 +102,7 @@ func _on_state_changed(from, to):
 		State.EXIT_STATE:
 			set_active(false) # Disable on exit
 			emit_signal("exited", "")
-	
+
 	if to.ends_with(State.ENTRY_STATE) and to.length() > State.ENTRY_STATE.length():
 		# Nexted Entry state
 		var state = path_backward(get_current())
@@ -200,7 +200,7 @@ func update(delta=get_physics_process_delta_time()):
 		if _was_transited:
 			call_deferred("update")
 
-# Set trigger to be tested with condition, then trigger _transit on next update, 
+# Set trigger to be tested with condition, then trigger _transit on next update,
 # automatically call update() if process_mode set to MANUAL and auto_update true
 # Nested trigger can be accessed through path "path/to/param_name", for example, "App/Game/is_playing"
 func set_trigger(name, auto_update=true):
@@ -209,7 +209,7 @@ func set_trigger(name, auto_update=true):
 func set_nested_trigger(path, name, auto_update=true):
 	set_nested_param(path, name, null, auto_update)
 
-# Set param(null value treated as trigger) to be tested with condition, then trigger _transit on next update, 
+# Set param(null value treated as trigger) to be tested with condition, then trigger _transit on next update,
 # automatically call update() if process_mode set to MANUAL and auto_update true
 # Nested param can be accessed through path "path/to/param_name", for example, "App/Game/is_playing"
 func set_param(name, value, auto_update=true):
@@ -232,7 +232,7 @@ func set_nested_param(path, name, value, auto_update=true):
 			_local_parameters[path] = local_params
 	_on_param_edited(auto_update)
 
-# Remove param, then trigger _transit on next update, 
+# Remove param, then trigger _transit on next update,
 # automatically call update() if process_mode set to MANUAL and auto_update true
 # Nested param can be accessed through path "path/to/param_name", for example, "App/Game/is_playing"
 func erase_param(name, auto_update=true):
@@ -251,7 +251,7 @@ func erase_nested_param(path, name, auto_update=true):
 	_on_param_edited(auto_update)
 	return result
 
-# Clear params from specified path, empty string to clear all, then trigger _transit on next update, 
+# Clear params from specified path, empty string to clear all, then trigger _transit on next update,
 # automatically call update() if process_mode set to MANUAL and auto_update true
 # Nested param can be accessed through path "path/to/param_name", for example, "App/Game/is_playing"
 func clear_param(path="", auto_update=true):
