@@ -8,14 +8,110 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "DTS",
+"language": "GDScript",
+"path": "res://addons/dialogic/Localization/translation_service.gd"
+}, {
+"base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicClass.gd"
+}, {
+"base": "Control",
+"class": "DialogicBackgroundMusic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
+}, {
+"base": "Node",
+"class": "DialogicDefinitionsUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
+}, {
+"base": "Reference",
+"class": "DialogicResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicResources.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
+}, {
+"base": "PanelContainer",
+"class": "LogContainer",
+"language": "GDScript",
+"path": "res://addons/hyperlog/log_container.gd"
+}, {
+"base": "Control",
+"class": "Tracker",
+"language": "GDScript",
+"path": "res://addons/hyperlog/trackers/tracker.gd"
+}, {
+"base": "Tracker",
+"class": "TrackerAngle",
+"language": "GDScript",
+"path": "res://addons/hyperlog/trackers/tracker_angle.gd"
+}, {
+"base": "Tracker",
+"class": "TrackerBar",
+"language": "GDScript",
+"path": "res://addons/hyperlog/trackers/tracker_bar.gd"
+}, {
+"base": "Tracker",
+"class": "TrackerColor",
+"language": "GDScript",
+"path": "res://addons/hyperlog/trackers/tracker_color.gd"
+}, {
+"base": "Tracker",
+"class": "TrackerGraph",
+"language": "GDScript",
+"path": "res://addons/hyperlog/trackers/tracker_graph.gd"
+}, {
+"base": "Tracker",
+"class": "TrackerText",
+"language": "GDScript",
+"path": "res://addons/hyperlog/trackers/tracker_text.gd"
+}, {
+"base": "Resource",
+"class": "ValueTracker",
+"language": "GDScript",
+"path": "res://addons/hyperlog/value_tracker.gd"
+} ]
+_global_script_class_icons={
+"DTS": "",
+"Dialogic": "",
+"DialogicBackgroundMusic": "",
+"DialogicDefinitionsUtil": "",
+"DialogicResources": "",
+"DialogicUtil": "",
+"LogContainer": "",
+"Tracker": "",
+"TrackerAngle": "",
+"TrackerBar": "",
+"TrackerColor": "",
+"TrackerGraph": "",
+"TrackerText": "",
+"ValueTracker": ""
+}
+
 [application]
 
 config/name="Squiggles 3D First Person Game"
 config/icon="res://icon.png"
 
+[autoload]
+
+HyperLog="*res://addons/hyperlog/hyperlog.tscn"
+
 [debug]
 
 settings/stdout/print_fps=true
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/hyperlog/plugin.cfg", "res://addons/imjp94.yafsm/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/scatter/plugin.cfg" )
 
 [physics]
 
