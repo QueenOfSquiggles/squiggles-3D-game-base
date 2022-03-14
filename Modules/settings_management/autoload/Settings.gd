@@ -23,6 +23,8 @@ func reload_settings() -> void:
 	var env := get_tree().root.find_world().environment
 	assert(env, "Environment was found null!")
 	for key in world_environment.keys():
-		env.set_indexed(key, world_environment[key])
+		var value = world_environment[key]
+		env.set_indexed(key, value)
+		print("World environment [%s] = [%s]" % [str(key), str(value)])
 	get_viewport().msaa = viewport_msaa
 	OS.window_fullscreen = fullscreen

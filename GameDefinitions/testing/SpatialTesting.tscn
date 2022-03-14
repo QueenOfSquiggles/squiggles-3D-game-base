@@ -53,7 +53,7 @@ width = 10.0026
 material = ExtResource( 5 )
 
 [node name="CSGBox7" type="CSGBox" parent="world_boxes"]
-transform = Transform( 0.0401196, -0.0356794, 0.998557, -0.413535, 0.909163, 0.0491001, -0.909603, -0.414909, 0.0217205, 9.55536, 2.12592, 17.7878 )
+transform = Transform( 0.0401196, -0.0356794, 0.998557, -0.283086, 0.95801, 0.0456043, -0.958255, -0.284507, 0.0283346, 9.55536, 1.51689, 17.7878 )
 calculate_tangents = false
 use_collision = true
 width = 27.4396
@@ -68,7 +68,7 @@ depth = 127.402
 material = ExtResource( 4 )
 
 [node name="CSGBox8" type="CSGBox" parent="world_boxes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.49013, 46.3535 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94399, 46.3535 )
 use_collision = true
 width = 54.5363
 depth = 33.2894
