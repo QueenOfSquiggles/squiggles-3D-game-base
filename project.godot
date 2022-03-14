@@ -117,7 +117,8 @@ config/icon="res://icon.png"
 [autoload]
 
 HyperLog="*res://addons/hyperlog/hyperlog.tscn"
-SceneManagement="*res://Modules/SceneManagement/SceneManagement.gd"
+SceneManagement="*res://Modules/SceneManagement/autoload/SceneManagement.gd"
+SaveData="*res://Modules/serialization/autoload/SaveData.gd"
 
 [editor_plugins]
 

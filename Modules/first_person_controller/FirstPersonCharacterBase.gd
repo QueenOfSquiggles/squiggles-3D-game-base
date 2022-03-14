@@ -79,12 +79,13 @@ func _apply_jump(vel : Vector3, _delta : float) -> Vector3:
 		vel.y = jump_strength
 	return vel
 
+const view_angle_limit := deg2rad(70)
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		var mouse_event := event as InputEventMouseMotion
 		pivot.rotate_x(-mouse_event.relative.y * mouse_sensitivity)
 		rotate_y(-mouse_event.relative.x * mouse_sensitivity)
-		pivot.rotation.x = clamp(pivot.rotation.x, -50, 50)
+		pivot.rotation.x = clamp(pivot.rotation.x, -view_angle_limit, view_angle_limit)
 		
 	elif event.is_action_pressed(toggle_mouse_capture):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
