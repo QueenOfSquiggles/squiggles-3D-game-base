@@ -125,7 +125,7 @@ settings/stdout/print_fps=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/hyperlog/plugin.cfg", "res://addons/imjp94.yafsm/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/scatter/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/hyperlog/plugin.cfg", "res://addons/imrp/plugin.cfg" )
 
 [physics]
 

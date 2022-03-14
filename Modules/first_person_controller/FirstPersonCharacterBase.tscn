@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://modules/first_person_controller/FirstPersonCharacterBase.gd" type="Script" id=1]
+[ext_resource path="res://Modules/first_person_controller/FirstPersonCharacterBase.gd" type="Script" id=1]
 
 [node name="FirstPersonCharacterBase" type="KinematicBody"]
 script = ExtResource( 1 )
