@@ -8,14 +8,14 @@ An autoload for handling scene loading and unloading.
 """
 
 const DEFAULT_LOADING_SCREEN := "res://Modules/SceneManagement/DefaultLoadingScreen.tscn"
-const SCENE_TRANSITION_SCENE := "res://Modules/SceneManagement/SceneTransition.tscn" 
+const SCENE_TRANSITION_SCENE := "res://Modules/SceneManagement/SceneTransition.tscn"
 var loading_scene : LoadingScreen
 var scene_transition : Node = null
 
 func _ready() -> void:
 	scene_transition = load(SCENE_TRANSITION_SCENE).instance()
 	add_child(scene_transition)
-	
+
 
 func load_scene(path : String, use_loading_screen : bool = false) -> void:
 	"""

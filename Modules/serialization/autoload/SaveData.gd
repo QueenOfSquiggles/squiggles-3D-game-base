@@ -23,12 +23,12 @@ var destructions_per_frame := 50
 func get_save_data_for(node : Node) -> Dictionary:
 	"""
 	The general purpose save data manager
-	
+
 	"""
 	#if node.filename.empty():
 		# node is not instanced. no save data
 	#	return {}
-		
+
 	var data := {
 		"node_path" : get_tree().current_scene.get_path_to(node),
 		"node_name" : node.name,
@@ -52,7 +52,7 @@ func load_obj_from_data(data : Dictionary) -> void:
 
 """
 	Edit above to customize functionality
-	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 
@@ -64,13 +64,13 @@ func load_obj_from_data(data : Dictionary) -> void:
 #	< 0  /|\
 #
 """
-	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	Leave below alone if no advanced changes are needed
 """
 signal on_saving
 signal on_loading
 
-# a local queue for destruction. This is loaded 
+# a local queue for destruction. This is loaded
 var destruction_queue := []
 
 const RESOURCE_RESPAWN_PROBABILITY := 0.25
@@ -102,12 +102,12 @@ func save_data() -> void:
 	var dir := Directory.new()
 	dir.remove(get_current_save_name()) # delete old file, we want clean data
 
-	# open file for writing (will create a new file)	
+	# open file for writing (will create a new file)
 	var file := open_file(get_current_save_name(),File.WRITE)
 	if not file:
 		print("FAILED TO OPEN FILE???")
 		return
-		
+
 	var scene_objects := get_persistant_objs()
 	print("Saving data for ", scene_objects.size(), " persistent objects")
 	for i in range(scene_objects.size()):
@@ -214,7 +214,7 @@ func delete_dir(path : String) -> void:
 	var queue := []
 	while filename:
 		if dir.current_is_dir():
-			if not (filename == ".." or filename == "."):				
+			if not (filename == ".." or filename == "."):
 				var f_path := path + filename
 				delete_dir(f_path)
 		else:
@@ -225,4 +225,4 @@ func delete_dir(path : String) -> void:
 	for file in queue:
 		dir.remove(file)
 	dir.remove(path)
-	
+
