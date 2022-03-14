@@ -22,10 +22,12 @@ func load_scene(path : String, use_loading_screen : bool = false) -> void:
 
 
 func _load_instant(path: String) -> void:
-	get_tree().change_scene(path)
+	var err := get_tree().change_scene(path)
+	if err != OK:
+		push_error("Failed to change scene to %s; Error = %s" % [path, str(err)])
 
 var loader : ResourceInteractiveLoader
-var loading_title : String = ""
+var loading_title : String = "not_filled"
 var current_loading_scene_name := ""
 const form_title := "Loading scene [%s] Stage (%d / %d)"
 var wait_frames
@@ -42,7 +44,7 @@ func _load_gradual(path: String) -> void:
 	_load_instant(DEFAULT_LOADING_SCREEN)
 	wait_frames = 1
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if loader == null:
 		set_process(false)
 		return
@@ -61,17 +63,19 @@ func _process(delta: float) -> void:
 			set_new_scene(resource)
 			break
 		elif err == OK:
+			loading_title = form_title % [current_loading_scene_name, loader.get_stage(), loader.get_stage_count()]
 			update_progress()
 		else:
 			assert(false, "Something failed! ErrorCode : %s" % err)
 			loader = null
 			break
-	loading_title = form_title % [current_loading_scene_name, loader.get_stage(), loader.get_stage_count()]
-
 
 func set_new_scene(scene : PackedScene) -> void:
 	current_scene = scene
-	get_tree().change_scene_to(scene)
+	var err := get_tree().change_scene_to(scene)
+	if err != OK:
+		push_error("Failed to change scene to %s; Error = %s" % [str(scene), str(err)])
+
 
 func update_progress() -> void:
 	var progress := float(loader.get_stage()) / float(loader.get_stage_count())

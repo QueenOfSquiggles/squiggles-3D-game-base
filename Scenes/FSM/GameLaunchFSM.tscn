@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Scenes/FSM/GameLaunchFSM.gd" type="Script" id=1]
-
-[node name="GameStateFSM" type="Node"]
-script = ExtResource( 1 )

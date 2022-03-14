@@ -69,15 +69,15 @@ func _get_movement() -> Vector3:
 		is_sprinting = false
 	return movement
 
-func _apply_gravity(velocity : Vector3, delta : float) -> Vector3:
+func _apply_gravity(vel : Vector3, delta : float) -> Vector3:
 	if use_gravity:
-		velocity.y += gravity * delta
-	return velocity
+		vel.y += gravity * delta
+	return vel
 
-func _apply_jump(velocity : Vector3, delta : float) -> Vector3:
+func _apply_jump(vel : Vector3, _delta : float) -> Vector3:
 	if use_gravity and Input.is_action_pressed(input_jump) and is_on_floor():
-		velocity.y = jump_strength
-	return velocity
+		vel.y = jump_strength
+	return vel
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
