@@ -1,7 +1,9 @@
 extends Spatial
 
+export (String) var scene_path : String
+export var LOAD_GRADUAL := false
+
 
 func _input(event: InputEvent) -> void:
-	pass
-	#if event.is_action_pressed("jump"):
-	#	SceneManagement.load_scene("res://GameDefinitions/testing/Node2DTesting.tscn", true)
+	if event.is_action_pressed("ui_enter"):
+		SceneManagement.load_scene(scene_path, LOAD_GRADUAL)

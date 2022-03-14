@@ -4,6 +4,10 @@
 
 [node name="Node2DTesting" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 614, 284 )
+current = true
+
 [node name="Icon" type="Sprite" parent="."]
 position = Vector2( 785, 289 )
 scale = Vector2( 0.371094, 0.371094 )

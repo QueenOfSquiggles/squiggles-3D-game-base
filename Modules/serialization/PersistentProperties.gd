@@ -10,8 +10,8 @@ func _ready() -> void:
 	source_node = get_node(source_node_path)
 	if not source_node:
 		source_node = get_parent()
-	SaveData.connect("on_loading", self, "load_data")
-	SaveData.connect("on_saving", self, "save_data")
+	var _err = SaveData.connect("on_loading", self, "load_data")
+	_err = SaveData.connect("on_saving", self, "save_data")
 
 func load_data() -> void:
 	var data := SaveData.load_custom_data(save_id) as Dictionary

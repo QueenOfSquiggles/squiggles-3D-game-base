@@ -5,14 +5,20 @@ it does need to be configured to handle specific games but is a really good base
 It does have to be called manually from the scene that needs persistence, so it isn't fully automatic.
 
 """
+# the group name for objects recognized as persistent objects
+const PERSISTENT_OBJ_GROUP_NAME := "persist"
 
+# a constant prefix for all saves
+const SAVE_PATH_PREFIX := "user://saves/"
+const SAVE_FILE_TYPE := ".save"
+
+# A custom suffix for setting up a multiple saves system
+var custom_save_suffix := "save_slot/"
 
 # limits the number of objects removed per frame
 # this makes sure we don't have a massive stutter at the start of the level
 # this could be a const, but I like the idea that specific scenes can set their own rate based on needs unique to that scene
 var destructions_per_frame := 50
-
-
 
 func get_save_data_for(node : Node) -> Dictionary:
 	"""
@@ -63,17 +69,6 @@ func load_obj_from_data(data : Dictionary) -> void:
 """
 signal on_saving
 signal on_loading
-
-# the group name for objects recognized as persistent objects
-const PERSISTENT_OBJ_GROUP_NAME := "persist"
-
-# a constant prefix for all saves
-const SAVE_PATH_PREFIX := "user://saves/"
-const SAVE_FILE_TYPE := ".save"
-
-# A custom suffix for setting up a multiple saves system
-# this game probably won't use it
-var custom_save_suffix := "save_slot/"
 
 # a local queue for destruction. This is loaded 
 var destruction_queue := []
@@ -205,7 +200,6 @@ func load_custom_data(suffix : String) -> Dictionary:
 	return data
 
 func delete_data() -> void:
-	print("Deleting save data for : ", get_current_save_dir())
 	delete_dir(get_current_save_dir())
 
 func delete_dir(path : String) -> void:
@@ -222,7 +216,6 @@ func delete_dir(path : String) -> void:
 		if dir.current_is_dir():
 			if not (filename == ".." or filename == "."):				
 				var f_path := path + filename
-				print("Adding dir to queue : ", f_path)
 				delete_dir(f_path)
 		else:
 			queue.append(filename)
@@ -230,8 +223,6 @@ func delete_dir(path : String) -> void:
 	dir.list_dir_end()
 
 	for file in queue:
-		print("Deleted file : ", file)
 		dir.remove(file)
 	dir.remove(path)
-	print("Deleted dir : ", path)
 	

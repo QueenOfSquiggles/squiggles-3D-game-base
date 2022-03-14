@@ -8,18 +8,27 @@ An autoload for handling scene loading and unloading.
 """
 
 const DEFAULT_LOADING_SCREEN := "res://Modules/SceneManagement/DefaultLoadingScreen.tscn"
-
+const SCENE_TRANSITION_SCENE := "res://Modules/SceneManagement/SceneTransition.tscn" 
 var loading_scene : LoadingScreen
+var scene_transition : Node = null
+
+func _ready() -> void:
+	scene_transition = load(SCENE_TRANSITION_SCENE).instance()
+	add_child(scene_transition)
+	
 
 func load_scene(path : String, use_loading_screen : bool = false) -> void:
 	"""
 	Doesn't use a loading screen by default because we should know whether or not the
 	"""
+	var anim := scene_transition.get_node("AnimationPlayer") as AnimationPlayer
+	anim.play("fade_out")
 	if use_loading_screen:
 		_load_gradual(path)
 	else:
+		yield(anim, "animation_finished")
 		_load_instant(path)
-
+		anim.play_backwards("fade_out")
 
 func _load_instant(path: String) -> void:
 	var err := get_tree().change_scene(path)
@@ -75,6 +84,9 @@ func set_new_scene(scene : PackedScene) -> void:
 	var err := get_tree().change_scene_to(scene)
 	if err != OK:
 		push_error("Failed to change scene to %s; Error = %s" % [str(scene), str(err)])
+	var anim := scene_transition.get_node("AnimationPlayer") as AnimationPlayer
+	anim.play_backwards("fade_out")
+
 
 
 func update_progress() -> void:

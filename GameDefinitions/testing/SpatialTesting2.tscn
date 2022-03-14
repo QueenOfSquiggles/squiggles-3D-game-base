@@ -3,12 +3,12 @@
 [ext_resource path="res://Modules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
 [ext_resource path="res://GameDefinitions/testing/SpatialTesting.gd" type="Script" id=3]
-[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_purple_01.tres" type="Material" id=4]
-[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_green_01.tres" type="Material" id=5]
+[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_light_01.tres" type="Material" id=4]
+[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=5]
 
-[node name="SpatialTesting" type="Spatial"]
+[node name="SpatialTesting2" type="Spatial"]
 script = ExtResource( 3 )
-scene_path = "res://GameDefinitions/testing/SpatialTesting2.tscn"
+scene_path = "res://GameDefinitions/testing/SpatialTesting.tscn"
 
 [node name="FirstPersonCharacterBase" parent="." instance=ExtResource( 1 )]
 
@@ -52,24 +52,9 @@ use_collision = true
 width = 10.0026
 material = ExtResource( 5 )
 
-[node name="CSGBox7" type="CSGBox" parent="world_boxes"]
-transform = Transform( 0.0401196, -0.0356794, 0.998557, -0.413535, 0.909163, 0.0491001, -0.909603, -0.414909, 0.0217205, 9.55536, 2.12592, 17.7878 )
-calculate_tangents = false
-use_collision = true
-width = 27.4396
-depth = 9.58033
-material = ExtResource( 5 )
-
 [node name="CSGBox" type="CSGBox" parent="world_boxes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03196, 0 )
 use_collision = true
 width = 54.5363
 depth = 127.402
-material = ExtResource( 4 )
-
-[node name="CSGBox8" type="CSGBox" parent="world_boxes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.49013, 46.3535 )
-use_collision = true
-width = 54.5363
-depth = 33.2894
 material = ExtResource( 4 )
