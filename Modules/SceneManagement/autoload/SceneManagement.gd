@@ -14,7 +14,7 @@ var scene_transition : Node = null
 
 func _ready() -> void:
 	scene_transition = load(SCENE_TRANSITION_SCENE).instance()
-	add_child(scene_transition)
+	call_deferred("add_child", scene_transition)
 
 
 func load_scene(path : String, use_loading_screen : bool = false) -> void:

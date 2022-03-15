@@ -42,8 +42,9 @@ vec3 dither(vec3 input, vec2 screen_pos){
 void fragment() {
 	vec2 factor = screen_size / pixelate_amount;
 	vec2 pixel_coords = round(SCREEN_UV * factor) / factor;
+	pixel_coords = SCREEN_UV;
 	vec3 sample = texture(SCREEN_TEXTURE, pixel_coords).rgb;
-	sample = dither(sample, pixel_coords);
 	sample = posterize(sample, 0.9, num_colors);
+	sample = dither(sample, pixel_coords);
 	COLOR = vec4(sample, 1.0);
 }
