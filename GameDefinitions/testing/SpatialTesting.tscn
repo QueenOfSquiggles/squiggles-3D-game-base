@@ -13,16 +13,16 @@ script = ExtResource( 3 )
 scene_path = "res://GameDefinitions/testing/SpatialTesting2.tscn"
 
 [node name="FirstPersonCharacterBase" parent="." instance=ExtResource( 1 )]
-jump_strength = 20.0
 
 [node name="world_boxes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302803, 0 )
 
-[node name="CSGBox2" type="CSGBox" parent="world_boxes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.304707, 8.3019 )
-calculate_tangents = false
+[node name="CSGBox" type="CSGBox" parent="world_boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03196, 0 )
 use_collision = true
-width = 10.0026
-material = ExtResource( 5 )
+width = 54.5363
+depth = 127.402
+material = ExtResource( 4 )
 
 [node name="CSGBox3" type="CSGBox" parent="world_boxes"]
 transform = Transform( 0.741309, 0, 0.671164, 0, 1, 0, -0.671164, 0, 0.741309, 0, -0.304707, -26.7838 )
@@ -31,18 +31,12 @@ use_collision = true
 width = 10.0026
 material = ExtResource( 5 )
 
-[node name="CSGBox4" type="CSGBox" parent="world_boxes"]
-transform = Transform( 0.157003, 0, 0.987598, 0, 1, 0, -0.987598, 0, 0.157003, 17.1364, -0.304707, 0.172436 )
-calculate_tangents = false
-use_collision = true
-width = 10.0026
-material = ExtResource( 5 )
-
 [node name="CSGBox5" type="CSGBox" parent="world_boxes"]
-transform = Transform( 0.157003, 0, 0.987598, 0, 1, 0, -0.987598, 0, 0.157003, -5.10652, -0.304707, -11.7544 )
+transform = Transform( 0.157003, 0, 0.987598, 0, 1, 0, -0.987598, 0, 0.157003, -5.10652, -0.535638, -11.7544 )
 calculate_tangents = false
 use_collision = true
 width = 10.0026
+height = 1.0
 material = ExtResource( 5 )
 
 [node name="CSGBox6" type="CSGBox" parent="world_boxes"]
@@ -53,19 +47,28 @@ width = 10.0026
 material = ExtResource( 5 )
 
 [node name="CSGBox7" type="CSGBox" parent="world_boxes"]
-transform = Transform( 0.0401196, -0.0356794, 0.998557, -0.283086, 0.95801, 0.0456043, -0.958255, -0.284507, 0.0283346, 9.55536, 1.51689, 17.7878 )
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984807, 17.3837, 0.24764, 3.51607 )
 calculate_tangents = false
 use_collision = true
-width = 27.4396
-depth = 9.58033
+width = 14.2025
+depth = 54.4789
 material = ExtResource( 5 )
 
-[node name="CSGBox" type="CSGBox" parent="world_boxes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03196, 0 )
+[node name="CSGBox9" type="CSGBox" parent="world_boxes"]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939692, 2.02167, 0.646507, 18.1374 )
+calculate_tangents = false
 use_collision = true
-width = 54.5363
-depth = 127.402
-material = ExtResource( 4 )
+width = 14.2025
+depth = 25.5779
+material = ExtResource( 5 )
+
+[node name="CSGBox10" type="CSGBox" parent="world_boxes"]
+transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866025, -15.3257, -1.13992, 19.1839 )
+calculate_tangents = false
+use_collision = true
+width = 14.2025
+depth = 25.5779
+material = ExtResource( 5 )
 
 [node name="CSGBox8" type="CSGBox" parent="world_boxes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94399, 46.3535 )
