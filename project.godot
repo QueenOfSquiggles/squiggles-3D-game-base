@@ -127,6 +127,10 @@ SceneManagement="*res://Modules/SceneManagement/autoload/SceneManagement.gd"
 SaveData="*res://Modules/serialization/autoload/SaveData.gd"
 Settings="*res://Modules/settings_management/autoload/Settings.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/hyperlog/plugin.cfg", "res://addons/imrp/plugin.cfg" )

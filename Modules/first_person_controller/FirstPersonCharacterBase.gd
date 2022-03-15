@@ -30,7 +30,6 @@ export (float) var mouse_sensitivity := 0.003
 onready var pivot :Spatial = $Pivot
 onready var camera :Camera= $Pivot/Camera
 onready var selection_check :RayCast= $Pivot/Camera/SelectionCast
-onready var ground_cast : RayCast = $GroundCast
 
 # "Building a better jump" math stolen shamelessly
 onready var _gravity := -(2.0 * jump_height) / pow(time_to_peak, 2)
@@ -58,11 +57,10 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.linear_interpolate(movement, acceleration * delta)
 	velocity = _apply_gravity(velocity, delta)
 	velocity = _apply_jump(velocity, delta)
-	var snap := Vector3.DOWN if velocity.y > 0 else Vector3.UP
-	if is_on_floor() and velocity.y < 0:
+	if stop_on_slopes and is_on_floor() and velocity.y < 0:
+		# don't apply gravity if we are already on the floor
 		velocity.y = 0
-	var _clear = move_and_slide(velocity, Vector3.UP, true)
-	#velocity = move_and_slide_with_snap(velocity, snap, Vector3.UP, stop_on_slopes)
+	var _clear = move_and_slide(velocity, Vector3.UP, stop_on_slopes)
 
 func _get_movement() -> Vector3:
 	if not can_move_in_air and not is_on_floor():

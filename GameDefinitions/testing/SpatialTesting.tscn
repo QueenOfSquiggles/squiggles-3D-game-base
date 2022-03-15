@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Modules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_purple_01.tres" type="Material" id=4]
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_green_01.tres" type="Material" id=5]
 [ext_resource path="res://Modules/interactables/InteractableBase.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=7]
 
 [node name="SpatialTesting" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.73273, 0 )
@@ -94,3 +95,5 @@ environment = ExtResource( 2 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.835418, -0.39347, 0.383743, -0.133544, 0.53196, 0.836172, -0.533145, -0.7498, 0.391863, 0, 0, 0 )
 shadow_enabled = true
+
+[node name="ConversionLayer" parent="." instance=ExtResource( 7 )]
