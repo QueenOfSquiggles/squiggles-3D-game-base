@@ -127,8 +127,13 @@ SceneManagement="*res://Modules/SceneManagement/autoload/SceneManagement.gd"
 SaveData="*res://Modules/serialization/autoload/SaveData.gd"
 Settings="*res://Modules/settings_management/autoload/Settings.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
+window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 
 [editor_plugins]
@@ -185,6 +190,7 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/voxel_cone_tracing/high_quality=true
 quality/filters/msaa=1
 quality/filters/use_fxaa=true
 quality/filters/use_debanding=true
