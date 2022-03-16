@@ -27,3 +27,4 @@ current = true
 [node name="SelectionCast" type="RayCast" parent="Pivot/Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, -5 )
+collide_with_areas = true

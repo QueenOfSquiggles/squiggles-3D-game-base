@@ -1,6 +1,6 @@
-extends RigidBody
+extends Area
 
 
 
 func interact(source : Node) -> void:
-	queue_free()
+	pass

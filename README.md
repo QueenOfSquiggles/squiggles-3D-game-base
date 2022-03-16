@@ -6,16 +6,18 @@
  ### Hierarchy
  res:
   - Modules
-  - Boilerplate
+  - TierTwoModules
   - GameDefinitions
  
 ### Modules
 
 Every subfolder in this section should be a completely contained module. It should serve a single purpose and solve a single problem. Ideally any necessary assets would also be contained in this module as well. No external dependencies. This is a constraint because I want these modules to be able to be dropped directly into any other project and work as expected.
  
-### Boilerplate
+### TierTwoModules
 
-Boilerplate is for code that will likely be shared between projects, but doesn't fit the constraints of the modules. Ideally, this section should be kept as lean as absolutely possible. 
+Tier two modules are like regular modules, but they are allowed dependcies amongst the Modules group. Still no interdepence among different tier two modules so they are also decoupled to a significant degree. 
+
+Tier two modules are intended to create more specific mechanics building up from the base/core modules. For example an inventory system that would require some level of dependencies among several different modules. 
  
 ### GameDefinitions
 

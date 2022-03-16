@@ -126,6 +126,7 @@ HyperLog="*res://addons/hyperlog/hyperlog.tscn"
 SceneManagement="*res://Modules/SceneManagement/autoload/SceneManagement.gd"
 SaveData="*res://Modules/serialization/autoload/SaveData.gd"
 Settings="*res://Modules/settings_management/autoload/Settings.gd"
+LocksManager="*res://Modules/lock-and-key/autoload/LocksManager.gd"
 
 [debug]
 
