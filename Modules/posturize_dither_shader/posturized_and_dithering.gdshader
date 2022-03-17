@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform float num_colors = 16.0;
 uniform float pixelate_amount = 20.0;
 uniform vec2 screen_size = vec2(1024.0, 600.0);
+uniform float motion_scale = 0.0;
 
 uniform float threshold_succeed_value = 1.0;
 uniform float threshold_fail_value = 0.1;
@@ -67,6 +68,7 @@ void vertex(){
 	dither_offsets.x = TIME * time_scale * dither_offset_amount;
 	dither_offsets.y = (TIME + 0.2) * time_scale * dither_offset_amount;
 	dither_offsets.z = (TIME - 0.2) * time_scale * dither_offset_amount;
+	dither_offsets *= motion_scale;
 }
 
 void fragment() {

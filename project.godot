@@ -117,7 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Squiggles 3D First Person Game"
-run/main_scene="res://GameDefinitions/testing/SpatialTesting.tscn"
+run/main_scene="res://GameDefinitions/testing/InteriorSceneTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
