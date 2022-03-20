@@ -34,6 +34,7 @@ onready var pivot :Spatial = $Pivot
 onready var camera :Camera= $Pivot/Camera
 onready var selection_check :RayCast= $Pivot/Camera/SelectionCast
 onready var held_item_root :Spatial = $Pivot/Camera/held_object
+onready var anim : AnimationPlayer = $AnimationPlayer
 
 # "Building a better jump" math stolen shamelessly
 onready var _gravity := -(2.0 * jump_height) / pow(time_to_peak, 2)
@@ -42,6 +43,8 @@ onready var _jump_velocity := -_gravity * time_to_peak
 var velocity := Vector3()
 
 var is_sprinting := false
+
+var can_interact := false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -65,6 +68,20 @@ func _physics_process(delta: float) -> void:
 		# don't apply gravity if we are already on the floor
 		velocity.y = 0
 	var _clear = move_and_slide(velocity, Vector3.UP, stop_on_slopes)
+	
+	var flag := can_interact
+	can_interact = false
+	if selection_check.is_colliding():
+		var collider := selection_check.get_collider()
+		if collider.has_method("interact"):
+			can_interact = true
+	if flag and not can_interact:
+		# end can interact
+		anim.play("end_can_interact")
+	elif can_interact and not flag:
+		# start can interact
+		anim.play("start_can_interact")
+	
 
 func _get_movement() -> Vector3:
 	if not can_move_in_air and not is_on_floor():

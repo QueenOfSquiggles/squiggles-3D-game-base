@@ -32,7 +32,7 @@ surfaces/1 = {
 }
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.573578, 0.0968474, 0.196628 )
+extents = Vector3( 0.562179, 0.112854, 0.196628 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.376357, 0.776945, 1 )
@@ -42,7 +42,7 @@ extents = Vector3( 2.02153, 0.46666, 0.290615 )
 
 [node name="PickupCouch" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00041151, 0, 0.00240546 )
-mode = 3
+mass = 500.0
 world_scale = Vector3( 5, 5, 5 )
 scale_children = [ NodePath("couch_root") ]
 
@@ -57,7 +57,7 @@ material/0 = null
 material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -0.0346167, -0.595183, 0.110458 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0.0179818, -0.464702, 0.110458 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="." index="2"]

@@ -395,7 +395,7 @@ transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0.2391
 shape = SubResource( 11 )
 
 [node name="PickupCouch" parent="Building/props" instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0009, 0.408244, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0009, 3.06969, 0 )
 
 [node name="GroundPlane" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0248623, -8.09982 )
