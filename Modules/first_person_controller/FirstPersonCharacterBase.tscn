@@ -28,3 +28,6 @@ current = true
 enabled = true
 cast_to = Vector3( 0, 0, -5 )
 collide_with_areas = true
+
+[node name="held_object" type="Spatial" parent="Pivot/Camera"]
+transform = Transform( 0.752806, 0, 0.658243, 0, 1, 0, -0.658243, 0, 0.752806, -0.392411, -0.288434, -0.753845 )
