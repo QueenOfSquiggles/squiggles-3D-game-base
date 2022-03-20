@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://TierTwoModules/pickup_items/PickupItemBase.gd" type="Script" id=1]
+
+[node name="PickupItemBase" type="RigidBody"]
+script = ExtResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=2]
@@ -19,7 +19,7 @@
 [ext_resource path="res://Modules/kenney_food/GLTF format/riceBall.glb" type="PackedScene" id=17]
 [ext_resource path="res://Modules/kenney_food/GLTF format/appleHalf.glb" type="PackedScene" id=18]
 [ext_resource path="res://Modules/kenney_food/GLTF format/plate.glb" type="PackedScene" id=19]
-[ext_resource path="res://Modules/kenney_food/GLTF format/sandwich.glb" type="PackedScene" id=20]
+[ext_resource path="res://GameDefinitions/testing/PickupItems/PickupSandwich.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Modules/kenney_food/GLTF format/glass.glb" type="PackedScene" id=21]
 [ext_resource path="res://Modules/kenney_furniture/GLTF format/wallDoorway.glb" type="PackedScene" id=22]
 [ext_resource path="res://Modules/kenney_furniture/Modified/doorwayFront_openable.tscn" type="PackedScene" id=23]
@@ -52,11 +52,14 @@ extents = Vector3( 5.27297, 3.62663, 0.331761 )
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.701393, 3.62663, 0.331761 )
 
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 1, 0.0951361, 0.55592 )
+
 [sub_resource type="GIProbeData" id=2]
-bounds = AABB( -13.1978, -3.86317, -15.8226, 26.3956, 7.72634, 31.6453 )
-cell_size = 0.0618072
-to_cell_xform = Transform( 16.1793, 0, 0, 0, 16.1793, 0, 0, 0, 16.1793, 213.532, 62.5035, 256 )
-dynamic_data = PoolIntArray( 0, 10, 512, 128, 512, 1, 0, 0, 0, -1018691584, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+bounds = AABB( -13.1978, -3.86317, -15.8226, 26.3956, 7.72634, 31.6452 )
+cell_size = 0.061807
+to_cell_xform = Transform( 16.1794, 0, 0, 0, 16.1794, 0, 0, 0, 16.1794, 213.532, 62.5037, 256 )
+dynamic_data = PoolIntArray( 0, 10, 512, 128, 512, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
 dynamic_range = 4
 bias = 1.5
 normal_bias = 0.0
@@ -440,14 +443,19 @@ transform = Transform( 0.602651, 0, 0.798005, 0, 1, 0, -0.798005, 0, 0.602651, 0
 [node name="riceBall2" parent="Building/props/deskCorner/plate" instance=ExtResource( 17 )]
 transform = Transform( 0.602651, 0, 0.798005, 0, 1, 0, -0.798005, 0, 0.602651, -0.0216446, 0.068655, -0.171214 )
 
-[node name="sandwich" parent="Building/props/deskCorner/plate" instance=ExtResource( 20 )]
-transform = Transform( 0.864863, 5.41317e-09, -0.502009, 0.0310842, 0.998081, 0.0535519, 0.501046, -0.0619195, 0.863203, 0.0478339, 0.0786042, 0.106814 )
-
 [node name="appleHalf" parent="Building/props/deskCorner/plate" instance=ExtResource( 18 )]
 transform = Transform( 0.102134, -0.702418, -0.704399, 0.989594, 0.14389, 7.8618e-08, 0.101356, -0.697069, 0.709804, -0.165672, 0.0560057, 0.008811 )
 
 [node name="glass" parent="Building/props/deskCorner/plate" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.523434, 0, 0 )
+
+[node name="PickupSandwich" parent="Building/props/deskCorner/plate" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0.239117, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="Building/props/deskCorner/plate"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Building/props/deskCorner/plate/StaticBody"]
+shape = SubResource( 11 )
 
 [node name="LightingSetup" type="Spatial" parent="."]
 
