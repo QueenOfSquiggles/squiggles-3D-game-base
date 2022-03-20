@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=2]
@@ -24,9 +24,8 @@
 [ext_resource path="res://Modules/kenney_furniture/GLTF format/wallDoorway.glb" type="PackedScene" id=22]
 [ext_resource path="res://Modules/kenney_furniture/Modified/doorwayFront_openable.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Modules/label-3D/Label3D.tscn" type="PackedScene" id=24]
-
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 14.4669, 0.179478, 16.3197 )
+[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_green_01.tres" type="Material" id=25]
+[ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=26]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 8.25798, 3.62663, 0.331761 )
@@ -55,11 +54,16 @@ extents = Vector3( 0.701393, 3.62663, 0.331761 )
 [sub_resource type="BoxShape" id=11]
 extents = Vector3( 1, 0.0951361, 0.55592 )
 
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 25.612, 0.250241, 19.7069 )
+
+[sub_resource type="QuadMesh" id=13]
+
 [sub_resource type="GIProbeData" id=2]
-bounds = AABB( -13.1978, -3.86317, -15.8226, 26.3956, 7.72634, 31.6452 )
-cell_size = 0.061807
-to_cell_xform = Transform( 16.1794, 0, 0, 0, 16.1794, 0, 0, 0, 16.1794, 213.532, 62.5037, 256 )
-dynamic_data = PoolIntArray( 0, 10, 512, 128, 512, 1, 0, 0, 3, 0, 991727520, 0, 0, 1, 984781648, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+bounds = AABB( -26.9218, -3.86317, -24.4979, 53.8437, 7.72634, 48.9959 )
+cell_size = 0.105163
+to_cell_xform = Transform( 9.50901, 0, 0, 0, 9.50901, 0, 0, 0, 9.50901, 256, 36.7349, 232.951 )
+dynamic_data = PoolIntArray( 0, 10, 512, 128, 512, 1, 0, 1, 163876, 0, 0, 0, 0, 0, 67372036, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
 dynamic_range = 4
 bias = 1.5
 normal_bias = 0.0
@@ -77,73 +81,6 @@ transform = Transform( -0.597122, 0, 0.802151, 0, 1, 0, -0.802151, 0, -0.597122,
 
 [node name="Building" type="Spatial" parent="."]
 transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
-
-[node name="floor" type="Spatial" parent="Building"]
-
-[node name="mesh" type="Spatial" parent="Building/floor"]
-
-[node name="floorFull" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -5, 0, 0 )
-
-[node name="floorFull2" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0 )
-
-[node name="floorFull3" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 5 )
-
-[node name="floorFull4" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -5, 0, 5 )
-
-[node name="floorFull5" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 0, 5 )
-
-[node name="floorFull6" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 0, 0 )
-
-[node name="floorFull7" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 0, -5 )
-
-[node name="floorFull8" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -5, 0, -5 )
-
-[node name="floorFull9" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -5 )
-
-[node name="floorFull10" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 5, 0, -5 )
-
-[node name="floorFull11" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 5, 0, 0 )
-
-[node name="floorFull12" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 0, 0 )
-
-[node name="floorFull13" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 0, -5 )
-
-[node name="floorFull14" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 0, -10 )
-
-[node name="floorFull15" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 0, -15 )
-
-[node name="floorFull16" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 0, -20 )
-
-[node name="floorFull17" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 5, 0, -20 )
-
-[node name="floorFull18" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -20 )
-
-[node name="floorFull19" parent="Building/floor/mesh" instance=ExtResource( 4 )]
-transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -5, 0, -20 )
-
-[node name="collision" type="StaticBody" parent="Building/floor"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Building/floor/collision"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97495, 0, -10.5755 )
-shape = SubResource( 1 )
 
 [node name="ceiling" type="Spatial" parent="Building"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.4095, 0 )
@@ -457,6 +394,21 @@ transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0.2391
 [node name="CollisionShape" type="CollisionShape" parent="Building/props/deskCorner/plate/StaticBody"]
 shape = SubResource( 11 )
 
+[node name="PickupCouch" parent="Building/props" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0009, 0.408244, 0 )
+
+[node name="GroundPlane" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0248623, -8.09982 )
+
+[node name="CollisionShape" type="CollisionShape" parent="GroundPlane"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.325758, 0 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance" type="MeshInstance" parent="GroundPlane"]
+transform = Transform( 50.4822, 0, 0, 0, -0.0890533, 1.13598, 0, -38.9498, -0.00259726, 0, 0, 0 )
+mesh = SubResource( 13 )
+material/0 = ExtResource( 25 )
+
 [node name="LightingSetup" type="Spatial" parent="."]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="LightingSetup"]
@@ -466,9 +418,9 @@ light_indirect_energy = 0.5
 shadow_enabled = true
 
 [node name="GIProbe" type="GIProbe" parent="LightingSetup"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48881, 3.25257, -10.2239 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33643, 3.25257, -10.2239 )
 subdiv = 3
-extents = Vector3( 13.1978, 3.86317, 15.8226 )
+extents = Vector3( 26.9218, 3.86317, 24.4979 )
 data = SubResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="LightingSetup"]

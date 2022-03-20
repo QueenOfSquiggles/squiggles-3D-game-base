@@ -9,7 +9,7 @@ height = 2.03236
 [node name="FirstPersonCharacterBase" type="KinematicBody"]
 script = ExtResource( 1 )
 stop_on_slopes = true
-jump_height = 2.0
+jump_height = 3.0
 time_to_peak = 0.2
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
