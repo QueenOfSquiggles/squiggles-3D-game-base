@@ -125,7 +125,15 @@ func _input(event: InputEvent) -> void:
 			pivot.rotation.x = clamp(pivot.rotation.x, -view_angle_limit, view_angle_limit)
 	elif event.is_action_released(input_toggle_rotate_item) and held_item_root.get_child_count() > 0:
 		var item : Spatial = held_item_root.get_child(0)
-		item.rotation = Vector3.ZERO
+		if "keep_rotation" in item:
+			# item allows for retaining rotation, and doesn't want to keep it (likely based on the item's state or something)
+			if not item.keep_rotation:
+				# has to be nested because then it won't reset when desired by the held item
+				item.rotation = Vector3.ZERO
+		else:
+			# by default reset rotation
+			item.rotation = Vector3.ZERO
+			
 	elif event.is_action_pressed(toggle_mouse_capture):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

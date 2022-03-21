@@ -24,8 +24,3 @@ func _set_scales(scale : Vector3) -> void:
 			node.scale = scale
 		else:
 			print("failed to find spatial node at : ", path)
-
-
-func _on_PickupCouch_sleeping_state_changed() -> void:
-	if self.sleeping:
-		self.mode = RigidBody.MODE_STATIC
