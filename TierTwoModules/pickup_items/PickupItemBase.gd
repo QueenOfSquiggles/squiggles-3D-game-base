@@ -50,7 +50,9 @@ func pickup_item(player : FirstPersonCharacterBase) -> void:
 	self.collision_mask = 0
 
 func remove_item(player : FirstPersonCharacterBase) -> void:
+	set_as_toplevel(true)
 	var glob_rot := self.rotation
+	set_as_toplevel(false)
 	var trans := (get_parent() as Spatial).global_transform
 	get_parent().remove_child(self)
 	original_parent.add_child(self)

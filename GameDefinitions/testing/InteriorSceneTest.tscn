@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://Modules/label-3D/Label3D.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_green_01.tres" type="Material" id=25]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Modules/interactables/LightSwitchInteractable.tscn" type="PackedScene" id=27]
+[ext_resource path="res://GameDefinitions/testing/interactables/WorldLightSwitch.tscn" type="PackedScene" id=28]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 8.25798, 3.62663, 0.331761 )
@@ -51,6 +53,10 @@ extents = Vector3( 5.27297, 3.62663, 0.331761 )
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 0.701393, 3.62663, 0.331761 )
 
+[sub_resource type="CylinderShape" id=14]
+radius = 0.12698
+height = 0.337064
+
 [sub_resource type="BoxShape" id=11]
 extents = Vector3( 1, 0.0951361, 0.55592 )
 
@@ -58,16 +64,6 @@ extents = Vector3( 1, 0.0951361, 0.55592 )
 extents = Vector3( 25.612, 0.250241, 19.7069 )
 
 [sub_resource type="QuadMesh" id=13]
-
-[sub_resource type="GIProbeData" id=2]
-bounds = AABB( -26.9218, -3.86317, -24.4979, 53.8437, 7.72634, 48.9959 )
-cell_size = 0.105163
-to_cell_xform = Transform( 9.50901, 0, 0, 0, 9.50901, 0, 0, 0, 9.50901, 256, 36.7349, 232.951 )
-dynamic_data = PoolIntArray( 0, 10, 512, 128, 512, 1, 0, 1, 163876, 0, 0, 0, 0, 0, 67372036, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
-dynamic_range = 4
-bias = 1.5
-normal_bias = 0.0
-propagation = 0.7
 
 [node name="InteriorSceneTest" type="Spatial"]
 
@@ -309,6 +305,12 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.0895
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46671, 0, 1.66924 )
 shape = SubResource( 10 )
 
+[node name="objects" type="Spatial" parent="Building/walls"]
+
+[node name="WorldLightSwitch" parent="Building/walls/objects" instance=ExtResource( 28 )]
+transform = Transform( -0.462911, 0, -4.0469e-08, 0, 0.462911, 0, 4.0469e-08, 0, -0.462911, 4.73041, 3.09029, -10.0032 )
+target_node = NodePath("../../../../LightingSetup/OmniLight")
+
 [node name="props" type="Spatial" parent="Building"]
 
 [node name="bedBunk" parent="Building/props" instance=ExtResource( 7 )]
@@ -370,6 +372,13 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0560136, 0.195877, -0.
 light_color = Color( 0.85098, 0.713726, 0.415686, 1 )
 light_energy = 0.5
 omni_range = 5.46838
+
+[node name="LightSwitchInteractable" parent="Building/props/deskCorner/lampRoundTable" instance=ExtResource( 27 )]
+target_node = NodePath("../OmniLight")
+
+[node name="CollisionShape" type="CollisionShape" parent="Building/props/deskCorner/lampRoundTable/LightSwitchInteractable"]
+transform = Transform( 1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0.0576733, 0.154305, -0.0604851 )
+shape = SubResource( 14 )
 
 [node name="plate" parent="Building/props/deskCorner" instance=ExtResource( 19 )]
 transform = Transform( 0.2, 0, -1.59872e-14, 0, 0.2, 0, 1.59872e-14, 0, 0.2, 0.300943, 0.392152, -0.701555 )
@@ -475,28 +484,26 @@ shape = SubResource( 12 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GroundPlane"]
 transform = Transform( 50.4822, 0, 0, 0, -0.0890533, 1.13598, 0, -38.9498, -0.00259726, 0, 0, 0 )
+use_in_baked_light = true
 mesh = SubResource( 13 )
 material/0 = ExtResource( 25 )
 
 [node name="LightingSetup" type="Spatial" parent="."]
 
+[node name="OmniLight" type="OmniLight" parent="LightingSetup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0843, -2.41372 )
+light_color = Color( 0.53125, 0.489406, 0.346558, 1 )
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 15.5698
+
 [node name="DirectionalLight" type="DirectionalLight" parent="LightingSetup"]
-transform = Transform( 0.902946, 0.301454, -0.306291, 0, 0.712712, 0.701457, 0.429755, -0.633377, 0.64354, 0, 10, 0 )
-light_energy = 0.5
-light_indirect_energy = 0.5
+transform = Transform( 0.950277, 0.187973, -0.248274, 0, 0.797268, 0.603626, 0.311406, -0.573611, 0.757625, 0, 8.90269, 0 )
+light_indirect_energy = 7.0
 shadow_enabled = true
 
 [node name="GIProbe" type="GIProbe" parent="LightingSetup"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33643, 3.25257, -10.2239 )
-subdiv = 3
-extents = Vector3( 26.9218, 3.86317, 24.4979 )
-data = SubResource( 2 )
-
-[node name="OmniLight" type="OmniLight" parent="LightingSetup"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0843, -2.41372 )
-light_energy = 0.2
-shadow_enabled = true
-omni_range = 9.46139
+extents = Vector3( 10, 10, 9.81776 )
 
 [node name="Label3D" parent="." instance=ExtResource( 24 )]
 transform = Transform( -0.00305036, 0, 0.961507, 0, 1.02364, 0, -1.06261, 0, -0.635268, -6.99916, 2.34504, 0.979819 )
@@ -504,4 +511,5 @@ text = "Use WSAD to move"
 font_colour = Color( 1, 0, 0, 1 )
 viewport_size = Vector2( 150, 25 )
 sprite_billboard = 0
+sprite_shaded = true
 sprite_cast_shadow = false

@@ -117,7 +117,6 @@ margin_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 32, 32 )
-rect_scale = Vector2( 1e-05, 1e-05 )
 rect_pivot_offset = Vector2( 16, 16 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
