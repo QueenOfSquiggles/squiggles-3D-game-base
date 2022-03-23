@@ -4,9 +4,9 @@ class_name LimiterDecorator, "../../icons/limiter.svg"
 
 onready var cache_key = 'limiter_%s' % self.get_instance_id()
 
-export (float) var max_count = 0
+export (float) var max_count := 0.0
 
-func tick(actor, blackboard):
+func tick(actor : Node, blackboard : Blackboard) -> int:
 	var current_count = blackboard.get(cache_key)
 
 	if current_count == null:

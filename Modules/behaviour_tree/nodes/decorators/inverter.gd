@@ -3,7 +3,7 @@ extends Decorator
 class_name InverterDecorator, "../../icons/inverter.svg"
 
 
-func tick(action, blackboard):
+func tick(action : Node, blackboard : Blackboard) -> int:
 	for c in get_children():
 		var response = c.tick(action, blackboard)
 
@@ -13,3 +13,4 @@ func tick(action, blackboard):
 			return SUCCESS
 
 		return RUNNING
+	return RUNNING

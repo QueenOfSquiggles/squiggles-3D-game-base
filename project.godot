@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Modules/behaviour_tree/nodes/bt_root.gd"
 }, {
+"base": "Reference",
+"class": "Blackboard",
+"language": "GDScript",
+"path": "res://Modules/behaviour_tree/blackboard.gd"
+}, {
 "base": "BehaviorTreeNode",
 "class": "Composite",
 "language": "GDScript",
@@ -186,6 +191,7 @@ _global_script_class_icons={
 "BehaviorTree": "",
 "BehaviorTreeNode": "res://Modules/behaviour_tree/icons/action.svg",
 "BehaviorTreeRoot": "res://Modules/behaviour_tree/icons/tree.svg",
+"Blackboard": "",
 "Composite": "res://Modules/behaviour_tree/icons/category_composite.svg",
 "ConditionLeaf": "res://Modules/behaviour_tree/icons/condition.svg",
 "DTS": "",

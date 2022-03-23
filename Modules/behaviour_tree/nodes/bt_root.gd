@@ -4,28 +4,24 @@ class_name BehaviorTreeRoot, "../icons/tree.svg"
 
 const Blackboard = preload("../blackboard.gd")
 
-export (bool) var enabled = true
+export (NodePath) var actor_path : NodePath
+export (bool) var enabled := true
 
-onready var blackboard = Blackboard.new()
+onready var actor := get_node(actor_path) as Node
+onready var blackboard := Blackboard.new()
 
-func _ready():
-	if self.get_child_count() != 1:
-		print("Behavior Tree error: Root should have one child")
-		disable()
-		return
+func _ready() -> void:
+	assert(self.get_child_count() == 1,"Behavior Tree error: Root should have one child")
 
-func physics_process(delta : float):
+func tick_tree(delta : float) -> void:
 	if not enabled:
 		return
-
 	blackboard.set("delta", delta)
+	self.get_child(0).tick(actor, blackboard)
 
-	self.get_child(0).tick(get_parent(), blackboard)
 
-
-func enable():
+func enable() -> void:
 	self.enabled = true
 
-
-func disable():
+func disable() -> void:
 	self.enabled = false
