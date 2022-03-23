@@ -11,10 +11,20 @@
 			"event_id": "dialogic_042"
 		},
 		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "unlock_mouse",
+				"target_node_path": "Globals"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "This is a test!\n1\n2\n3"
+			"text": "This is a test!"
 		},
 		{
 			"call_node": {
@@ -22,6 +32,16 @@
 					"false"
 				],
 				"method_name": "set_player_occupied_dialogue",
+				"target_node_path": "Globals"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "lock_mouse",
 				"target_node_path": "Globals"
 			},
 			"event_id": "dialogic_042"

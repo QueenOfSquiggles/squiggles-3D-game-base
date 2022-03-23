@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://TierTwoModules/first_person_controller/player_bt/LoadInputs.gd" type="Script" id=1]
 [ext_resource path="res://Modules/kenney_crosshairs/White/crosshair118.png" type="Texture" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Modules/behaviour_tree/nodes/decorators/limiter.gd" type="Script" id=12]
 [ext_resource path="res://Modules/behaviour_tree/nodes/decorators/succeeder.gd" type="Script" id=13]
 [ext_resource path="res://TierTwoModules/first_person_controller/PlayerUseBT.gd" type="Script" id=14]
-[ext_resource path="res://TierTwoModules/first_person_controller/player_bt/GrabCursor.gd" type="Script" id=15]
 [ext_resource path="res://Modules/behaviour_tree/nodes/decorators/time_limiter.gd" type="Script" id=16]
 [ext_resource path="res://TierTwoModules/first_person_controller/player_bt/TryToggleMouseCapture.gd" type="Script" id=17]
 [ext_resource path="res://Modules/behaviour_tree/nodes/composites/selector.gd" type="Script" id=18]
@@ -170,9 +169,6 @@ camera_pivot_path = NodePath("../../../../../../Pivot")
 selection_cast = NodePath("../../../../../../Pivot/Camera/SelectionCast")
 held_object_root = NodePath("../../../../../../Pivot/Camera/held_object")
 animation_player = NodePath("../../../../../../AnimationPlayer")
-
-[node name="GrabCursor" type="Node" parent="PlayerBehaviourTree/root/AlwaysSucceedDecorator/LimiterDecorator/SequenceComposite"]
-script = ExtResource( 15 )
 
 [node name="IsOccupied" type="Node" parent="PlayerBehaviourTree/root"]
 script = ExtResource( 7 )
