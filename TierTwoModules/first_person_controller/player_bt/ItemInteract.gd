@@ -1,5 +1,12 @@
 extends Leaf
 # Item Interact
 
-func tick(_actor : Node, _blackboard : Blackboard) -> int:
+func tick(actor : Node, bb : Blackboard) -> int:
+	if not bb.get("input_interact", false) as bool:
+		return FAILURE
+	var selection_cast := bb.get("selection_cast") as InteractionRayCast
+	var item := selection_cast.cached_collider as PickupItemBase
+	if not item:
+		return FAILURE
+	item.interact(actor)
 	return SUCCESS

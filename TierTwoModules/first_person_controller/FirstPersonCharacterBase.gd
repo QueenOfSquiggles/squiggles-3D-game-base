@@ -1,5 +1,5 @@
 extends KinematicBody
-class_name FirstPersonCharacterBase
+#class_name FirstPersonCharacterBase
 
 export (bool) var use_gravity := true
 export (float) var walk_speed := 10.0

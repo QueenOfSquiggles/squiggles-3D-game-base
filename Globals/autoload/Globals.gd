@@ -17,5 +17,8 @@ func _set_player_occupied(value : bool) -> void:
 	emit_signal("player_occupied_changed", player_occupied)
 
 func set_player_occupied_dialogue(value : Array) -> void:
-	var val := bool(value[0])
+	var s_val := value[0] as String
+	var val :bool= s_val.to_lower().begins_with("true")
+	print("method called; args : ", value, "\n\t->", val)
 	player_occupied = val
+	print("player_occupied = ", player_occupied)

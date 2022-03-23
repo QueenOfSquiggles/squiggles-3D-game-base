@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://TierTwoModules/first_person_controller/player_bt/LoadInputs.gd" type="Script" id=1]
 [ext_resource path="res://Modules/kenney_crosshairs/White/crosshair118.png" type="Texture" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://Modules/behaviour_tree/nodes/decorators/succeeder.gd" type="Script" id=13]
 [ext_resource path="res://TierTwoModules/first_person_controller/PlayerUseBT.gd" type="Script" id=14]
 [ext_resource path="res://TierTwoModules/first_person_controller/player_bt/GrabCursor.gd" type="Script" id=15]
+[ext_resource path="res://Modules/behaviour_tree/nodes/decorators/time_limiter.gd" type="Script" id=16]
+[ext_resource path="res://TierTwoModules/first_person_controller/player_bt/TryToggleMouseCapture.gd" type="Script" id=17]
+[ext_resource path="res://Modules/behaviour_tree/nodes/composites/selector.gd" type="Script" id=18]
+[ext_resource path="res://TierTwoModules/first_person_controller/UseCurrentItem.gd" type="Script" id=19]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.456194
@@ -163,6 +167,9 @@ script = ExtResource( 3 )
 script = ExtResource( 11 )
 camera_path = NodePath("../../../../../../Pivot/Camera")
 camera_pivot_path = NodePath("../../../../../../Pivot")
+selection_cast = NodePath("../../../../../../Pivot/Camera/SelectionCast")
+held_object_root = NodePath("../../../../../../Pivot/Camera/held_object")
+animation_player = NodePath("../../../../../../AnimationPlayer")
 
 [node name="GrabCursor" type="Node" parent="PlayerBehaviourTree/root/AlwaysSucceedDecorator/LimiterDecorator/SequenceComposite"]
 script = ExtResource( 15 )
@@ -176,14 +183,39 @@ script = ExtResource( 3 )
 [node name="LoadInputs" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
 script = ExtResource( 1 )
 
-[node name="LookCam" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
-script = ExtResource( 9 )
+[node name="MouseCapture" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+script = ExtResource( 13 )
 
-[node name="ItemInteract" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+[node name="TimeLimiterDecorator" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/MouseCapture"]
+script = ExtResource( 16 )
+time_limit = 0.2
+
+[node name="TryToggleMouseCapture" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/MouseCapture/TimeLimiterDecorator"]
+script = ExtResource( 17 )
+
+[node name="Item Interaction" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+script = ExtResource( 13 )
+
+[node name="ItemInteract" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/Item Interaction"]
 script = ExtResource( 8 )
 
-[node name="HeldItemRotate" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+[node name="Item Use" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+script = ExtResource( 13 )
+
+[node name="UseCurrentItem" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/Item Use"]
+script = ExtResource( 19 )
+
+[node name="SelectorComposite" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+script = ExtResource( 18 )
+
+[node name="HeldItemRotate" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/SelectorComposite"]
 script = ExtResource( 10 )
+
+[node name="LookCam" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/SelectorComposite"]
+script = ExtResource( 9 )
 
 [node name="Move" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
 script = ExtResource( 5 )
+
+[connection signal="on_end_collide_mt" from="Pivot/Camera/SelectionCast" to="." method="play_animation" binds= [ "end_can_interact" ]]
+[connection signal="on_start_collide_mt" from="Pivot/Camera/SelectionCast" to="." method="play_animation" binds= [ "start_can_interact" ]]

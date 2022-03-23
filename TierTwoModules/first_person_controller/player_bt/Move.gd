@@ -1,4 +1,4 @@
-extends Leaf
+extends ActionLeaf
 # Move
 export (bool) var use_gravity := true
 export (float) var walk_speed := 10.0
@@ -21,9 +21,7 @@ var camera :Camera
 var sprinting : bool
 var jumping :bool
 var kine :KinematicBody
-
-var init := false
-var physics_lock := false
+var delta : float
 
 func tick(actor : Node, bb : Blackboard) -> int:
 	input_move_vector = bb.get("move_vector", Vector2.ZERO) as Vector2
@@ -31,23 +29,16 @@ func tick(actor : Node, bb : Blackboard) -> int:
 	camera = bb.get("camera") as Camera
 	sprinting = bb.get("input_sprint", false) as bool
 	jumping = bb.get("input_jump", false) as bool
+	delta = bb.get("delta", 0.0) as float
 	kine = actor as KinematicBody
-	init = true
-	if physics_lock:
-		return RUNNING
-	return SUCCESS
 
-func _physics_process(delta: float) -> void:
-	if not init:
-		return
-	physics_lock = true
 	assert(kine, "Player Move node requires the BT actor is a KinematicBody")
 	
-	var movement := _get_movement(input_move_vector, camera)
+	var movement := _get_movement(input_move_vector)
 	movement *= sprint_speed if sprinting else walk_speed
 
 	velocity = velocity.linear_interpolate(movement, acceleration * delta)
-	velocity = _apply_gravity(velocity, delta)
+	velocity = _apply_gravity(velocity)
 
 	if use_gravity and jumping and kine.is_on_floor():
 		velocity.y = _jump_velocity
@@ -56,14 +47,15 @@ func _physics_process(delta: float) -> void:
 		# don't apply gravity if we are already on the floor
 		velocity.y = 0
 	var _clear = kine.move_and_slide(velocity, Vector3.UP, stop_on_slopes)
-	physics_lock = false
+	bb.set("velocity", velocity)
+	return SUCCESS
 
-func _get_movement(input : Vector2, camera : Camera) -> Vector3:
+func _get_movement(input : Vector2) -> Vector3:
 	var movement :Vector3= (-camera.global_transform.basis.z * input.y) + (camera.global_transform.basis.x * input.x)
 	movement.y = 0
 	return movement.normalized()
 
-func _apply_gravity(vel : Vector3, delta : float) -> Vector3:
+func _apply_gravity(vel : Vector3) -> Vector3:
 	if use_gravity:
 		vel.y += _gravity * delta
 	return vel

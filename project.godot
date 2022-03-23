@@ -92,12 +92,17 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "FirstPersonCharacterBase",
 "language": "GDScript",
-"path": "res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.gd"
+"path": "res://TierTwoModules/first_person_controller/PlayerUseBT.gd"
 }, {
 "base": "Node",
 "class": "GraphicsPresets",
 "language": "GDScript",
 "path": "res://Globals/settings_management/GraphicsPresets.gd"
+}, {
+"base": "RayCast",
+"class": "InteractionRayCast",
+"language": "GDScript",
+"path": "res://TierTwoModules/first_person_controller/PlayerSelectionCast.gd"
 }, {
 "base": "Decorator",
 "class": "InverterDecorator",
@@ -148,6 +153,11 @@ _global_script_classes=[ {
 "class": "Splash",
 "language": "GDScript",
 "path": "res://Modules/godot_splash_screens/splash/Splash.gd"
+}, {
+"base": "Decorator",
+"class": "TimeLimiterDecorator",
+"language": "GDScript",
+"path": "res://Modules/behaviour_tree/nodes/decorators/time_limiter.gd"
 }, {
 "base": "Control",
 "class": "Tracker",
@@ -203,6 +213,7 @@ _global_script_class_icons={
 "DialogicUtil": "",
 "FirstPersonCharacterBase": "",
 "GraphicsPresets": "",
+"InteractionRayCast": "",
 "InverterDecorator": "res://Modules/behaviour_tree/icons/inverter.svg",
 "Label3D": "",
 "Leaf": "res://Modules/behaviour_tree/icons/action.svg",
@@ -213,6 +224,7 @@ _global_script_class_icons={
 "SelectorComposite": "res://Modules/behaviour_tree/icons/selector.svg",
 "SequenceComposite": "res://Modules/behaviour_tree/icons/sequencer.svg",
 "Splash": "",
+"TimeLimiterDecorator": "res://Modules/behaviour_tree/icons/limiter.svg",
 "Tracker": "",
 "TrackerAngle": "",
 "TrackerBar": "",
