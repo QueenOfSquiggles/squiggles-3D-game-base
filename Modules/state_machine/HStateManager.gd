@@ -1,4 +1,5 @@
 extends Node
+class_name StateManager
 """
 HStateManager	- Hierarchical State Machine Manager
 Handles the states of a state machine in a way befitting of a hierachy of states.
