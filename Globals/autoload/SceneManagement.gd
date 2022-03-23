@@ -6,9 +6,10 @@ SceneManagement.gd
 An autoload for handling scene loading and unloading.
 
 """
+export (float) var test := 0.0
+const DEFAULT_LOADING_SCREEN := "res://Globals/scene_management/DefaultLoadingScreen.tscn"
+const SCENE_TRANSITION_SCENE := "res://Globals/scene_management/SceneTransition.tscn"
 
-const DEFAULT_LOADING_SCREEN := "res://Modules/SceneManagement/DefaultLoadingScreen.tscn"
-const SCENE_TRANSITION_SCENE := "res://Modules/SceneManagement/SceneTransition.tscn"
 var loading_scene : LoadingScreen
 var scene_transition : Node = null
 

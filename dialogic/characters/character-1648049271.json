@@ -1,0 +1,20 @@
+{
+	"color": "#ffffffff",
+	"description": "Brennan is a realtor who wants to help you find your ideal home!",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1648049271.json",
+	"mirror_portraits": false,
+	"name": "Brennan Hearthlus",
+	"nickname": "Mr. Hearthlus, Brennan",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100
+}

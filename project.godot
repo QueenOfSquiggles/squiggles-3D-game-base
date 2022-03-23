@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "BaseState",
+"language": "GDScript",
+"path": "res://Modules/state_machine/BaseState.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -42,12 +47,12 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "FirstPersonCharacterBase",
 "language": "GDScript",
-"path": "res://Modules/first_person_controller/FirstPersonCharacterBase.gd"
+"path": "res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.gd"
 }, {
 "base": "Node",
 "class": "GraphicsPresets",
 "language": "GDScript",
-"path": "res://Modules/settings_management/GraphicsPresets.gd"
+"path": "res://Globals/settings_management/GraphicsPresets.gd"
 }, {
 "base": "Spatial",
 "class": "Label3D",
@@ -57,7 +62,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "LoadingScreen",
 "language": "GDScript",
-"path": "res://Modules/SceneManagement/LoadingScreen.gd"
+"path": "res://Globals/scene_management/LoadingScreen.gd"
 }, {
 "base": "PanelContainer",
 "class": "LogContainer",
@@ -68,6 +73,11 @@ _global_script_classes=[ {
 "class": "PickupItemBase",
 "language": "GDScript",
 "path": "res://TierTwoModules/pickup_items/PickupItemBase.gd"
+}, {
+"base": "BaseState",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://TierTwoModules/first_person_controller/player_state_machine/PlayerBaseState.gd"
 }, {
 "base": "Node",
 "class": "Splash",
@@ -110,6 +120,7 @@ _global_script_classes=[ {
 "path": "res://addons/hyperlog/value_tracker.gd"
 } ]
 _global_script_class_icons={
+"BaseState": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicBackgroundMusic": "",
@@ -122,6 +133,7 @@ _global_script_class_icons={
 "LoadingScreen": "",
 "LogContainer": "",
 "PickupItemBase": "",
+"PlayerState": "",
 "Splash": "",
 "Tracker": "",
 "TrackerAngle": "",
@@ -141,10 +153,11 @@ config/icon="res://icon.png"
 [autoload]
 
 HyperLog="*res://addons/hyperlog/hyperlog.tscn"
-SceneManagement="*res://Modules/SceneManagement/autoload/SceneManagement.gd"
-SaveData="*res://Modules/serialization/autoload/SaveData.gd"
-Settings="*res://Modules/settings_management/autoload/Settings.gd"
-LocksManager="*res://Modules/lock-and-key/autoload/LocksManager.gd"
+SceneManagement="*res://Globals/autoload/SceneManagement.gd"
+SaveData="*res://Globals/autoload/SaveData.gd"
+Settings="*res://Globals/autoload/Settings.gd"
+LocksManager="*res://Globals/autoload/LocksManager.gd"
+Globals="*res://Globals/autoload/Globals.gd"
 
 [debug]
 
@@ -215,6 +228,7 @@ toggle_rotate_item={
 
 [physics]
 
+common/physics_fps=30
 common/enable_pause_aware_picking=true
 
 [rendering]

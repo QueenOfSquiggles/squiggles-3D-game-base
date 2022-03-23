@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Modules/blockout_assets/prototyping/mesh_lib/blockout_meshlib.tres" type="MeshLibrary" id=1]
-[ext_resource path="res://Modules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupSandwich.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://GameDefinitions/testing/music/mournful_drops.ogg" type="AudioStream" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -168,7 +167,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2921, 3.65462, 5.94196 )
 
 [node name="PickupSandwich16" parent="Props" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2921, 3.65462, 5.94196 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-autoplay = true

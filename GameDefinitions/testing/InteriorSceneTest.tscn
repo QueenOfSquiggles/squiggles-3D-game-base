@@ -2,7 +2,7 @@
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Modules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Modules/kenney_furniture/GLTF format/floorFull.glb" type="PackedScene" id=4]
 [ext_resource path="res://Modules/kenney_furniture/GLTF format/wall.glb" type="PackedScene" id=5]
 [ext_resource path="res://Modules/kenney_furniture/GLTF format/wallWindow.glb" type="PackedScene" id=6]

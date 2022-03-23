@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Modules/first_person_controller/FirstPersonCharacterBase.gd" type="Script" id=1]
+[ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.gd" type="Script" id=1]
 [ext_resource path="res://Modules/kenney_crosshairs/White/crosshair118.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
