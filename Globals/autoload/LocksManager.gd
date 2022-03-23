@@ -33,4 +33,4 @@ func get_lock(lock_name : String) -> bool:
 
 func clear_lock(lock_name : String) -> void:
 	# frees up memory if the lock is no longer in use
-	_locks.erase(lock_name)
+	var _err = _locks.erase(lock_name)

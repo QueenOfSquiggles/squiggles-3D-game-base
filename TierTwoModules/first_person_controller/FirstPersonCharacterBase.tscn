@@ -135,6 +135,7 @@ anims/start_can_interact = SubResource( 3 )
 
 [node name="PlayerBehaviourTree" type="Node" parent="."]
 script = ExtResource( 4 )
+actor_path = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="PlayerBehaviourTree"]
 script = ExtResource( 1 )

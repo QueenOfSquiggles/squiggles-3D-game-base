@@ -100,7 +100,7 @@ func load_save_data() -> void:
 
 func save_data() -> void:
 	var dir := Directory.new()
-	dir.remove(get_current_save_name()) # delete old file, we want clean data
+	var _err = dir.remove(get_current_save_name()) # delete old file, we want clean data
 
 	# open file for writing (will create a new file)
 	var file := open_file(get_current_save_name(),File.WRITE)
@@ -143,7 +143,7 @@ func _process(_delta: float) -> void:
 			entry.queue_free()
 		else:
 			print("Resource Respawn : ", entry.name, " -> ", entry)
-	for i in range(num):
+	for _i in range(num):
 		destruction_queue.remove(0)
 
 func open_file(path: String, open_flags) -> File:
@@ -184,7 +184,7 @@ func get_current_save_dir() -> String:
 
 func save_custom_data(suffix : String, data : Dictionary) -> void:
 	var dir := Directory.new()
-	dir.remove(get_current_save_name(suffix))
+	var _err = dir.remove(get_current_save_name(suffix))
 	var file := open_file(get_current_save_name(suffix),File.WRITE)
 	file.store_var(data, false)
 	file.close()
@@ -209,7 +209,7 @@ func delete_dir(path : String) -> void:
 		return
 	if dir.open(get_current_save_dir()) != OK:
 		return
-	dir.list_dir_begin()
+	var _err = dir.list_dir_begin()
 	var filename := dir.get_next()
 	var queue := []
 	while filename:
@@ -223,6 +223,6 @@ func delete_dir(path : String) -> void:
 	dir.list_dir_end()
 
 	for file in queue:
-		dir.remove(file)
-	dir.remove(path)
+		_err = dir.remove(file)
+	_err = dir.remove(path)
 

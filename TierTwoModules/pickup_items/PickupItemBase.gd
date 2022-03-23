@@ -43,13 +43,13 @@ func use_item(player : FirstPersonCharacterBase) -> void:
 	print("player used item!")
 	player.set_held_item(null) # should call the remove_item func
 
-func pickup_item(player : FirstPersonCharacterBase) -> void:
+func pickup_item(_player : FirstPersonCharacterBase) -> void:
 	self.mode = RigidBody.MODE_STATIC
 	self.transform = Transform.IDENTITY # reset position to ensure no weird reactions.
 	self.collision_layer = 0
 	self.collision_mask = 0
 
-func remove_item(player : FirstPersonCharacterBase) -> void:
+func remove_item(_player : FirstPersonCharacterBase) -> void:
 	set_as_toplevel(true)
 	var glob_rot := self.rotation
 	set_as_toplevel(false)
