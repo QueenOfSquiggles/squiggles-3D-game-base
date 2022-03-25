@@ -9,6 +9,8 @@ for more info on making graphics settings.
 
 """
 
+signal refresh_settings
+
 var fullscreen := false
 
 var viewport_msaa := Viewport.MSAA_DISABLED
@@ -20,11 +22,6 @@ var world_environment := {
 }
 
 func reload_settings() -> void:
-	var env := get_tree().root.find_world().environment
-	assert(env, "Environment was found null!")
-	for key in world_environment.keys():
-		var value = world_environment[key]
-		env.set_indexed(key, value)
-		print("World environment [%s] = [%s]" % [str(key), str(value)])
+	emit_signal("refresh_settings")
 	get_viewport().msaa = viewport_msaa
 	OS.window_fullscreen = fullscreen

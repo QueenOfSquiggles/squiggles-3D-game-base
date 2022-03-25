@@ -20,8 +20,8 @@
 [ext_resource path="res://TierTwoModules/first_person_controller/UseCurrentItem.gd" type="Script" id=19]
 
 [sub_resource type="CapsuleShape" id=1]
-radius = 0.456194
-height = 2.03236
+radius = 0.78681
+height = 2.78478
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -84,17 +84,17 @@ tracks/0/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
 
-[node name="FirstPersonCharacterBase" type="KinematicBody"]
+[node name="FirstPersonCharacterBase" type="KinematicBody" groups=["player"]]
 script = ExtResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.50146, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.19899, 0 )
 shape = SubResource( 1 )
 
 [node name="CharacterModel" type="Spatial" parent="."]
 
 [node name="Pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46855, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
 [node name="Camera" type="Camera" parent="Pivot"]
 current = true
@@ -189,10 +189,10 @@ time_limit = 0.2
 [node name="TryToggleMouseCapture" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/MouseCapture/TimeLimiterDecorator"]
 script = ExtResource( 17 )
 
-[node name="Item Interaction" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
+[node name="Interaction" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]
 script = ExtResource( 13 )
 
-[node name="ItemInteract" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/Item Interaction"]
+[node name="Interact" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions/Interaction"]
 script = ExtResource( 8 )
 
 [node name="Item Use" type="Node" parent="PlayerBehaviourTree/root/NormalInteractions"]

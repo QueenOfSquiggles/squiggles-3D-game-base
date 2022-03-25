@@ -6,11 +6,11 @@ export (float) var sprint_speed := 25.0
 export (float) var acceleration := 10.0
 export (float) var deacceleration := 5.0
 export (bool) var can_move_in_air := true
-export (bool) var stop_on_slopes := false
+export (bool) var stop_on_slopes := true
 
 # jump values
 export (float) var jump_height := 2.5
-export (float) var time_to_peak := 0.3
+export (float) var time_to_peak := 0.2
 
 onready var _gravity := -(2.0 * jump_height) / pow(time_to_peak, 2)
 onready var _jump_velocity := -_gravity * time_to_peak

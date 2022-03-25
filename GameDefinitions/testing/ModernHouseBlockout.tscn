@@ -1,0 +1,364 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=1]
+[ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Modules/kenney_furniture/Modified/doorwayFront_openable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Modules/environment/SettingsCompliantWorldEnvironment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Globals/settings_management/DebugSetGraphicsSetting.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GameDefinitions/testing/PickupItems/PickupSandwich.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_orange_01.tres" type="Material" id=9]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 0, 0.882353, 1, 0.290196 )
+
+[node name="ModernHouseBlockout" type="Spatial"]
+
+[node name="ConversionLayer" parent="." instance=ExtResource( 5 )]
+
+[node name="FirstPersonCharacterBase" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0793, 2.22448, 34.227 )
+
+[node name="SettingsCompliantWorldEnvironment" parent="." instance=ExtResource( 4 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.58763, 0.430987, -0.684793, 0, 0.846333, 0.532655, 0.80913, -0.313004, 0.49733, 0, 3.76407, 13.888 )
+shadow_enabled = true
+
+[node name="DebugSetGraphicsSetting" parent="." instance=ExtResource( 6 )]
+graphics_preset = 0
+
+[node name="House" type="Spatial" parent="."]
+
+[node name="HouseHull" type="CSGCombiner" parent="House"]
+use_collision = true
+
+[node name="HouseExteriorHull" type="CSGCombiner" parent="House/HouseHull"]
+
+[node name="CSGBox2" type="CSGBox" parent="House/HouseHull/HouseExteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.97976, 4.35256, -15.2777 )
+width = 17.0188
+height = 8.22063
+depth = 26.5638
+material = ExtResource( 1 )
+
+[node name="CSGBox3" type="CSGBox" parent="House/HouseHull/HouseExteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1593, 10.8249, -18.4885 )
+width = 56.1903
+height = 28.3991
+depth = 24.4834
+material = ExtResource( 1 )
+
+[node name="CSGBox4" type="CSGBox" parent="House/HouseHull/HouseExteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6822, 8.67715, 9.08106 )
+width = 23.242
+height = 18.2239
+depth = 62.662
+material = ExtResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="House/HouseHull/HouseExteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6822, 8.67715, 9.99244 )
+width = 29.7559
+height = 22.2085
+depth = 4.34217
+material = ExtResource( 1 )
+
+[node name="CSGBox6" type="CSGBox" parent="House/HouseHull/HouseExteriorHull"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.38829, 8.67715, -18.6041 )
+width = 29.7559
+height = 37.8907
+depth = 4.34217
+material = ExtResource( 1 )
+
+[node name="HouseInteriorHull" type="CSGCombiner" parent="House/HouseHull"]
+operation = 2
+
+[node name="CSGBox5" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55964, 2.73514, -16.3478 )
+width = 19.5561
+height = 6.83461
+depth = 14.5142
+material = ExtResource( 1 )
+
+[node name="CSGBox6" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1668, 2.73514, -6.47885 )
+width = 19.5561
+height = 6.83461
+depth = 9.69066
+material = ExtResource( 1 )
+
+[node name="CSGBox11" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8466, 4.30763, -0.66892 )
+width = 15.1796
+height = 11.7975
+depth = 15.4827
+material = ExtResource( 1 )
+
+[node name="CSGBox12" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2052, 14.5289, 33.4318 )
+width = 12.5177
+height = 6.98933
+depth = 15.4827
+material = ExtResource( 1 )
+
+[node name="CSGBox8" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3271, 3.84927, -10.1464 )
+width = 13.5506
+height = 7.55627
+depth = 14.5142
+material = ExtResource( 1 )
+
+[node name="CSGBox9" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1593, 9.69014, -18.1768 )
+width = 53.8388
+height = 25.6016
+depth = 20.2498
+material = ExtResource( 1 )
+
+[node name="CSGBox7" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6822, 7.57589, 5.3552 )
+width = 20.2753
+height = 16.1567
+depth = 27.1457
+material = ExtResource( 1 )
+
+[node name="CSGBox10" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6822, 4.24038, 34.3655 )
+width = 29.8803
+height = 9.18087
+depth = 27.1457
+material = ExtResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4655, 2.67694, -6.65222 )
+width = 2.27112
+height = 5.32295
+depth = 3.67377
+material = ExtResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4655, 3.77573, -7.64319 )
+width = 5.994
+height = 7.63531
+depth = 2.24342
+material = ExtResource( 1 )
+
+[node name="CSGBox13" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4046, 13.73, 24.5151 )
+width = 2.27112
+height = 5.32295
+depth = 3.67377
+material = ExtResource( 1 )
+
+[node name="CSGBox14" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.4046, 13.9819, 23.5241 )
+width = 5.994
+height = 6.25038
+depth = 2.24342
+material = ExtResource( 1 )
+
+[node name="CSGBox15" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.876, 13.9819, 17.9726 )
+width = 21.1505
+height = 6.25038
+depth = 14.049
+material = ExtResource( 1 )
+
+[node name="CSGBox16" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8667, 13.9819, 31.4929 )
+width = 9.44397
+height = 6.25038
+depth = 16.0956
+material = ExtResource( 1 )
+
+[node name="CSGBox17" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6566, 13.9819, 32.9802 )
+width = 1.85541
+height = 5.87334
+depth = 6.95372
+material = ExtResource( 1 )
+
+[node name="CSGBox3" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517769, 17.0929, -12.568 )
+width = 5.994
+height = 7.63531
+depth = 6.30221
+material = ExtResource( 1 )
+
+[node name="CSGBox4" type="CSGBox" parent="House/HouseHull/HouseInteriorHull"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0517769, 17.0929, -23.4052 )
+width = 5.994
+height = 7.63531
+depth = 6.30221
+material = ExtResource( 1 )
+
+[node name="Floor" type="CSGCombiner" parent="House"]
+use_in_baked_light = true
+use_collision = true
+
+[node name="ground" type="CSGBox" parent="House/Floor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.2401, 0 )
+width = 342.444
+height = 20.9371
+depth = 203.442
+material = ExtResource( 1 )
+
+[node name="pool void" type="CSGCombiner" parent="House/Floor"]
+operation = 2
+
+[node name="CSGBox" type="CSGBox" parent="House/Floor/pool void"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49712, -1.88402, 26.9773 )
+width = 19.9732
+height = 7.62974
+depth = 31.5073
+material = ExtResource( 9 )
+
+[node name="CSGSphere" type="CSGSphere" parent="House/Floor/pool void"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96113, 0, 11.6977 )
+radius = 5.56112
+material = ExtResource( 9 )
+
+[node name="CSGTorus" type="CSGTorus" parent="House/Floor/pool void"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18182, 0.106876, 11.0728 )
+inner_radius = 5.04215
+outer_radius = 8.26023
+material = ExtResource( 9 )
+
+[node name="CSGTorus2" type="CSGTorus" parent="House/Floor/pool void"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18182, -1.26857, 11.0728 )
+inner_radius = 2.32946
+outer_radius = 6.71387
+material = ExtResource( 9 )
+
+[node name="HouseWalkability" type="CSGCombiner" parent="House"]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 48.1446, 3.97733, 1.92554 )
+width = 5.02999
+height = 1.25517
+depth = 36.6204
+material = ExtResource( 1 )
+
+[node name="CSGBox4" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 45.6285, 6.33558, 3.59393 )
+width = 1.0625
+height = 4.21092
+depth = 36.6204
+material = ExtResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6285, 12.6318, 21.2268 )
+width = 1.0625
+height = 3.85913
+depth = 2.31723
+material = ExtResource( 1 )
+
+[node name="CSGBox7" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6285, 2.19469, -11.64 )
+width = 1.0625
+height = 3.85913
+depth = 6.66852
+material = ExtResource( 1 )
+
+[node name="CSGBox6" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7668, 11.6784, 19.4309 )
+width = 14.6173
+height = 1.81465
+depth = 0.771706
+material = ExtResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6199, 11.8599, 32.5692 )
+width = 0.483137
+depth = 15.0385
+material = ExtResource( 1 )
+
+[node name="CSGBox3" type="CSGBox" parent="House/HouseWalkability"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 37.0665, 11.8599, 39.7073 )
+width = 0.483137
+depth = 15.0385
+material = ExtResource( 1 )
+
+[node name="HouseWindows" type="CSGCombiner" parent="House"]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="House/HouseWindows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.11153, 3.28911, -2.90976 )
+width = 15.829
+height = 6.80557
+depth = 0.49233
+material = SubResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="House/HouseWindows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7127, 3.28911, -7.47223 )
+width = 0.634909
+height = 6.80557
+depth = 9.59175
+material = SubResource( 1 )
+
+[node name="CSGBox3" type="CSGBox" parent="House/HouseWindows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23292, 17.1912, -18.3774 )
+width = 0.634909
+height = 8.16034
+depth = 18.8774
+material = SubResource( 1 )
+
+[node name="CSGBox4" type="CSGBox" parent="House/HouseWindows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4175, 13.4349, 32.6265 )
+width = 0.634909
+height = 7.18055
+depth = 9.46152
+material = SubResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="House/HouseWindows"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8129, 5.02997, 0.140157 )
+width = 0.634909
+height = 10.7244
+depth = 15.7343
+material = SubResource( 1 )
+
+[node name="CSGBox6" type="CSGBox" parent="House/HouseWindows"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.6278, 5.02997, -7.1498 )
+width = 0.634909
+height = 10.7244
+depth = 13.8846
+material = SubResource( 1 )
+
+[node name="doorwayFront" parent="House" instance=ExtResource( 3 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 11.2463, 0.31462, -6.17264 )
+
+[node name="doorwayFront2" parent="House" instance=ExtResource( 3 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 34.1831, 11.1698, 25.6613 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="House"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4518, 4.52958, 38.3998 )
+height = 8.38663
+material = ExtResource( 1 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="House"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0269, 4.52958, 38.3998 )
+height = 8.38663
+material = ExtResource( 1 )
+
+[node name="Props" type="Spatial" parent="."]
+
+[node name="PickupSandwich" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3623, 2.56863, -20.7458 )
+
+[node name="PickupSandwich2" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0056, 2.56863, -20.0202 )
+
+[node name="PickupSandwich3" parent="Props" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6223, 2.56863, -17.5467 )
+
+[node name="PickupCouch" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2354, 2.97407, -22.5724 )
+
+[node name="PickupCouch2" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4907, 2.97407, -18.9531 )
+
+[node name="PickupCouch3" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9964, 2.97407, -17.3148 )
