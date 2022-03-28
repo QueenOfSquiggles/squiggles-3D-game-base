@@ -10,6 +10,7 @@ extents = Vector3( 0.401386, 0.324408, 0.74229 )
 world_scale = Vector3( 2, 2, 2 )
 held_scale = Vector3( 0.5, 0.5, 0.5 )
 scale_children = [ NodePath("sub") ]
+destroy_after_use = true
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )

@@ -6,15 +6,8 @@ An item that assigns a value to a specified property with a given value. Any col
 
 # path to expected property on collider
 export (String) var desired_property_name :String = "prop_path_not_set!!!"
-# value to assign to property (only first element)
-export (Array) var property_set : Array
-
-func _ready() -> void:
-	call_deferred("_debug_thingy")
-
-func _debug_thingy() -> void:
-	assert(property_set.size() > 0, "Property setter 'property_set' must be an array with at least one member!!!")
-	print("Object property name : ", desired_property_name)
+# value to assign to property
+export (bool) var desired_value : bool
 
 func use_item(player : FirstPersonCharacterBase) -> void:
 	var inter := player.selection_raycast
@@ -25,18 +18,17 @@ func use_item(player : FirstPersonCharacterBase) -> void:
 		var flag := false
 		for prop in prop_list:
 			var n :String = prop["name"]
-			print("property found : [%s] desired [%s]" % [n, desired_property_name])
+			#print("property found : [%s] desired [%s]" % [n, desired_property_name])
 			if n == desired_property_name:
 				print("found property on collider!!!")
 				flag=true
 				break
-				
 		if flag:
 			print("property is in collider : ", desired_property_name)
 			if _do_additonal_checks(player, inter, collider):
 				print("additional checks passed")
-				inter.cached_collider.set_indexed(desired_property_name, property_set[0])
-				print("Set property [%s] to [%s] on node [%s]" % [str(desired_property_name),str(property_set[0]),str(inter.cached_collider),])
+				inter.cached_collider.set_indexed(desired_property_name, desired_value)
+				print("Set property [%s] to [%s] on node [%s]" % [str(desired_property_name),str(desired_value),str(inter.cached_collider),])
 	else:
 		player.set_held_item(null) # should call the remove_item func
 

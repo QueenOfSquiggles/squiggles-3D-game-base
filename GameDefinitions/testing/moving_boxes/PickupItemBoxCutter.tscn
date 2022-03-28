@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://TierTwoModules/pickup_items/PickupItemMethodCaller.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Modules/kenney_food/GLTF format/cookingKnife.glb" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.16466, 0.221881, 0.0601361 )
+
+[node name="PickupItemBoxCutter" instance=ExtResource( 1 )]
+contacts_reported = 4
+contact_monitor = true
+static_mode_style = 2
+world_scale = Vector3( 3, 3, 3 )
+held_scale = Vector3( 2, 2, 2 )
+scale_children = [ NodePath("cookingKnife") ]
+method_to_call = "open_pickup_container"
+method_call_deferred = true
+
+[node name="cookingKnife" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( 3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0, 0.0358842 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="2"]
+shape = SubResource( 1 )

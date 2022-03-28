@@ -8,4 +8,3 @@ script = ExtResource( 2 )
 static_mode_style = 2
 keep_rotation = true
 desired_property_name = "locked"
-property_set = [ false ]

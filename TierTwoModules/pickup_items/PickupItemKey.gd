@@ -1,7 +1,7 @@
 extends "res://TierTwoModules/pickup_items/PickupItemPropertySetter.gd"
 
 export (bool) var is_skeleton_key := false
-export (bool) var destroy_after_use := false 
+export (bool) var destroy_after_use := false
 export (String) var keyed_name := "door_001"
 
 func _do_additonal_checks(player : FirstPersonCharacterBase, _raycast : InteractionRayCast, collider : Node) -> bool:

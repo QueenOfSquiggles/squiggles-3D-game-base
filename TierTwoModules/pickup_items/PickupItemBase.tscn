@@ -7,7 +7,6 @@
 contacts_reported = 4
 contact_monitor = true
 script = ExtResource( 1 )
-audio_lib_path = NodePath("PickupItemsAudioLib")
 
 [node name="PickupItemsAudioLib" parent="." instance=ExtResource( 2 )]
 

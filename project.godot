@@ -154,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://TierTwoModules/pickup_items/PickupItemBase.gd"
 }, {
+"base": "PickupItemBase",
+"class": "PickupItemContainer",
+"language": "GDScript",
+"path": "res://TierTwoModules/pickup_items/PickupItemContainer.gd"
+}, {
 "base": "Composite",
 "class": "SelectorComposite",
 "language": "GDScript",
@@ -239,6 +244,7 @@ _global_script_class_icons={
 "LoadingScreen": "",
 "LogContainer": "",
 "PickupItemBase": "",
+"PickupItemContainer": "",
 "SelectorComposite": "res://Modules/behaviour_tree/icons/selector.svg",
 "SequenceComposite": "res://Modules/behaviour_tree/icons/sequencer.svg",
 "Splash": "",
@@ -266,6 +272,10 @@ SaveData="*res://Globals/autoload/SaveData.gd"
 Settings="*res://Globals/autoload/Settings.gd"
 LocksManager="*res://Globals/autoload/LocksManager.gd"
 Globals="*res://Globals/autoload/Globals.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 

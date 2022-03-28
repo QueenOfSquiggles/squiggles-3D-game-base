@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=1]
 [ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
@@ -9,8 +9,10 @@
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupSandwich.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_orange_01.tres" type="Material" id=9]
+[ext_resource path="res://GameDefinitions/testing/moving_boxes/PickupMovingBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://GameDefinitions/testing/doors_and_keys/Key001.tscn" type="PackedScene" id=11]
 [ext_resource path="res://GameDefinitions/testing/doors_and_keys/Door001.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GameDefinitions/testing/moving_boxes/PickupItemBoxCutter.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -358,19 +360,198 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6223, 2.56863, -17.5467 )
 
 [node name="PickupCouch" parent="Props" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2354, 2.97407, -22.5724 )
+contacts_reported = 4
+contact_monitor = true
 
 [node name="PickupCouch2" parent="Props" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4907, 2.97407, -18.9531 )
+contacts_reported = 4
+contact_monitor = true
 
 [node name="PickupCouch3" parent="Props" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9964, 2.97407, -17.3148 )
+contacts_reported = 4
+contact_monitor = true
 
 [node name="Key001" parent="Props" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2023, 1.01403, 27.1315 )
 contacts_reported = 4
 contact_monitor = true
-audio_lib_path = NodePath("PickupItemsAudioLib")
-property_set = [  ]
 
 [node name="Door001" parent="Props" instance=ExtResource( 12 )]
 transform = Transform( -0.560206, 0, 4.96852, 0, 5, 0, -4.96852, 0, -0.560206, 28.733, 0.424759, 32.779 )
+
+[node name="PickupItemBoxCutter" parent="Props" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0596, 2.23521, 21.5326 )
+contacts_reported = 4
+contact_monitor = true
+
+[node name="boxes" type="Spatial" parent="Props"]
+
+[node name="PickupMovingBox" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.559, 1.76395, 21.1811 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox2" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.559, 1.76395, 19.4448 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox3" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.559, 1.76395, 17.6301 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox4" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2509, 2.1661, 15.5163 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox5" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0257, 2.1661, 15.3638 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox6" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8858, 2.16611, 15.3649 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox7" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8858, 5.60013, 16.7716 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox8" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4088, 5.60013, 16.7695 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox9" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3723, 5.60013, 19.006 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox10" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3723, 5.60013, 19.006 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox11" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2373, 3.32296, 19.2168 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox12" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4578, 3.32296, 19.0927 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox13" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3668, 3.32296, 21.0149 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox14" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8133, 3.32296, 21.654 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox15" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5041, 3.32296, 22.0431 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox16" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5041, 3.32296, 22.0431 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox17" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6968, 3.32296, 20.0419 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox18" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8605, 3.32296, 17.9655 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox19" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1298, 3.32296, 22.6606 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox20" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3468, 3.32296, 22.9403 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox21" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6367, 3.32296, 23.3822 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox22" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8313, 3.32296, 23.391 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox23" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8313, 3.32296, 23.391 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox24" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1134, 3.32296, 25.1793 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox27" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0633, 3.32296, 25.1533 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox25" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8914, 3.32296, 23.5908 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox26" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3831, 3.32296, 24.8349 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )
+
+[node name="PickupMovingBox28" parent="Props/boxes" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72009, 9.5642, -4.47426 )
+contacts_reported = 4
+contact_monitor = true
+container_contents_scene = ExtResource( 7 )

@@ -20,7 +20,6 @@ enum StaticStyle {
 export (RigidModeStart) var rigid_mode_start := RigidModeStart.RIGID_UNTIL_PICKUP
 export (StaticStyle) var static_mode_style := StaticStyle.ONLY_AFTER_DROPPED
 export (bool) var keep_rotation := false
-export (NodePath) var audio_lib_path : NodePath
 export (String) var sfx_impact := "impact"
 export (String) var sfx_pickup := "pickup"
 export (String) var sfx_drop := "drop"
@@ -28,7 +27,7 @@ export (String) var sfx_drop := "drop"
 onready var original_parent := get_parent()
 onready var original_collision_layer := self.collision_layer
 onready var original_collision_mask := self.collision_mask
-onready var audio_lib := get_node(audio_lib_path) as AudioLib3D
+onready var audio_lib := $PickupItemsAudioLib
 
 var has_been_dropped_before := false
 
@@ -38,6 +37,8 @@ func _ready() -> void:
 			self.mode = RigidBody.MODE_RIGID
 		RigidModeStart.START_STATIC:
 			self.mode = RigidBody.MODE_STATIC
+	if not audio_lib:
+		push_warning("PickupItem [%s] does not have an AudioLib3D set" % self.name)
 		
 
 func interact(player : FirstPersonCharacterBase) -> void:
