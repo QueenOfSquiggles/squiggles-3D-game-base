@@ -3,8 +3,6 @@ class_name PickupItemContainer
 
 export (PackedScene) var container_contents_scene : PackedScene
 
-
-
 func open_pickup_container() -> void:
 	print("Attempting to open container!")
 	if container_contents_scene:
