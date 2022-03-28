@@ -307,10 +307,10 @@ depth = 18.8774
 material = SubResource( 1 )
 
 [node name="CSGBox4" type="CSGBox" parent="House/HouseWindows"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4175, 13.4349, 32.6265 )
-width = 0.634909
-height = 7.18055
-depth = 9.46152
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.832, 14.0289, 32.9663 )
+width = 0.335162
+height = 6.40033
+depth = 8.18974
 material = SubResource( 1 )
 
 [node name="CSGBox5" type="CSGBox" parent="House/HouseWindows"]

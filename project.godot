@@ -25,6 +25,16 @@ _global_script_classes=[ {
 "path": "res://Modules/behaviour_tree/nodes/decorators/succeeder.gd"
 }, {
 "base": "Node",
+"class": "AudioLib",
+"language": "GDScript",
+"path": "res://Modules/audio_library/AudioLib.gd"
+}, {
+"base": "Spatial",
+"class": "AudioLib3D",
+"language": "GDScript",
+"path": "res://Modules/audio_library/AudioLib3D.gd"
+}, {
+"base": "Node",
 "class": "BehaviorTree",
 "language": "GDScript",
 "path": "res://Modules/behaviour_tree/nodes/behavior_tree.gd"
@@ -198,6 +208,8 @@ _global_script_class_icons={
 "ActionLeaf": "res://Modules/behaviour_tree/icons/action.svg",
 "AlwaysFailDecorator": "res://Modules/behaviour_tree/icons/fail.svg",
 "AlwaysSucceedDecorator": "res://Modules/behaviour_tree/icons/succeed.svg",
+"AudioLib": "",
+"AudioLib3D": "",
 "BehaviorTree": "",
 "BehaviorTreeNode": "res://Modules/behaviour_tree/icons/action.svg",
 "BehaviorTreeRoot": "res://Modules/behaviour_tree/icons/tree.svg",
@@ -249,10 +261,6 @@ Settings="*res://Globals/autoload/Settings.gd"
 LocksManager="*res://Globals/autoload/LocksManager.gd"
 Globals="*res://Globals/autoload/Globals.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/vsync/use_vsync=false
@@ -261,6 +269,13 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/hyperlog/plugin.cfg", "res://addons/imrp/plugin.cfg" )
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
 
 [input]
 

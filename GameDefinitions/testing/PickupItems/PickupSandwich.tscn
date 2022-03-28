@@ -14,3 +14,6 @@ static_mode_style = 2
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.087007, 0 )
 shape = SubResource( 1 )
+
+[node name="PickupItemsAudioLib" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0984461, 0 )

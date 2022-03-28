@@ -6,7 +6,7 @@ export (String) var anim_name := "cutscene"
 # pretty much everything else can be handled through the animation player.
 export (NodePath) var anim_player_path : NodePath
 
-onready var anim = get_node(anim_player_path) as AnimationPlayer
+onready var anim := get_node(anim_player_path) as AnimationPlayer
 
 func _on_Area_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
