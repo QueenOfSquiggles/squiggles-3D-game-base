@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=1]
 [ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupSandwich.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_orange_01.tres" type="Material" id=9]
-[ext_resource path="res://TierTwoModules/pickup_items/PickupItemCustomScaled.gd" type="Script" id=10]
 [ext_resource path="res://GameDefinitions/testing/doors_and_keys/Key001.tscn" type="PackedScene" id=11]
 [ext_resource path="res://GameDefinitions/testing/doors_and_keys/Door001.tscn" type="PackedScene" id=12]
 
@@ -359,18 +358,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6223, 2.56863, -17.5467 )
 
 [node name="PickupCouch" parent="Props" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2354, 2.97407, -22.5724 )
-script = ExtResource( 10 )
 
 [node name="PickupCouch2" parent="Props" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4907, 2.97407, -18.9531 )
-script = ExtResource( 10 )
 
 [node name="PickupCouch3" parent="Props" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9964, 2.97407, -17.3148 )
-script = ExtResource( 10 )
 
 [node name="Key001" parent="Props" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2023, 1.01403, 27.1315 )
+contacts_reported = 4
+contact_monitor = true
+audio_lib_path = NodePath("PickupItemsAudioLib")
 property_set = [  ]
 
 [node name="Door001" parent="Props" instance=ExtResource( 12 )]

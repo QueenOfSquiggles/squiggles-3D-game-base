@@ -7,9 +7,6 @@
 extents = Vector3( 0.401386, 0.324408, 0.74229 )
 
 [node name="Key001" instance=ExtResource( 1 )]
-contacts_reported = 4
-contact_monitor = true
-audio_lib_path = NodePath("PickupItemsAudioLib")
 world_scale = Vector3( 2, 2, 2 )
 held_scale = Vector3( 0.5, 0.5, 0.5 )
 scale_children = [ NodePath("sub") ]

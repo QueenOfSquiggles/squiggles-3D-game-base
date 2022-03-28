@@ -7,11 +7,13 @@ An item that assigns a value to a specified property with a given value. Any col
 # path to expected property on collider
 export (String) var desired_property_name :String = "prop_path_not_set!!!"
 # value to assign to property (only first element)
-export (Array) var property_set := []
+export (Array) var property_set : Array
 
 func _ready() -> void:
 	call_deferred("_debug_thingy")
+
 func _debug_thingy() -> void:
+	assert(property_set.size() > 0, "Property setter 'property_set' must be an array with at least one member!!!")
 	print("Object property name : ", desired_property_name)
 
 func use_item(player : FirstPersonCharacterBase) -> void:
