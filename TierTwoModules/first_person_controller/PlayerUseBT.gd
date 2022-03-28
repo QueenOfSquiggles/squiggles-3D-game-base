@@ -4,6 +4,7 @@ class_name FirstPersonCharacterBase
 onready var bt := $PlayerBehaviourTree
 onready var anim_player := $AnimationPlayer
 onready var held_item_root := $Pivot/Camera/held_object
+onready var selection_raycast : InteractionRayCast = $"Pivot/Camera/SelectionCast"
 
 func _physics_process(delta: float) -> void:
 	bt.tick_tree(delta)

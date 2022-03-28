@@ -22,7 +22,7 @@
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupSandwich.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Modules/kenney_food/GLTF format/glass.glb" type="PackedScene" id=21]
 [ext_resource path="res://Modules/kenney_furniture/GLTF format/wallDoorway.glb" type="PackedScene" id=22]
-[ext_resource path="res://Modules/kenney_furniture/Modified/doorwayFront_openable.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Modules/interactables/InteractDoorSimple.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Modules/label-3D/Label3D.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_green_01.tres" type="Material" id=25]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=26]
