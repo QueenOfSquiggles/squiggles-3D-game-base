@@ -13,12 +13,12 @@ signal refresh_settings
 
 var fullscreen := false
 
-var viewport_msaa := Viewport.MSAA_DISABLED
+var viewport_msaa := Viewport.MSAA_4X
 
 var world_environment := {
 	"glow_enabled" : true,
-	"ssao_enabled" : false,
-	"ss_reflections_enabled" : false,
+	"ssao_enabled" : true,
+	"ss_reflections_enabled" : true,
 }
 
 func reload_settings() -> void:

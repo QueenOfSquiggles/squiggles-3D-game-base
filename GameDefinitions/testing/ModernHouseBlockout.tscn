@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=1]
 [ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Modules/interactables/InteractDoorSimple.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Modules/environment/SettingsCompliantWorldEnvironment.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Globals/settings_management/DebugSetGraphicsSetting.tscn" type="PackedScene" id=6]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Modules/procedural_skies/CloudsLayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Globals/serialization/LevelSaver.tscn" type="PackedScene" id=9]
@@ -31,9 +30,6 @@ transform = Transform( 0.252475, 0, -0.967604, 0, 1, 0, 0.967604, 0, 0.252475, 1
 transform = Transform( 0.567586, 0.586395, -0.577917, -0.152169, 0.764562, 0.62633, 0.80913, -0.267555, 0.523186, 0, 3.76407, 13.888 )
 shadow_enabled = true
 directional_shadow_max_distance = 200.0
-
-[node name="DebugSetGraphicsSetting" parent="." instance=ExtResource( 6 )]
-graphics_preset = 0
 
 [node name="House" type="Spatial" parent="."]
 

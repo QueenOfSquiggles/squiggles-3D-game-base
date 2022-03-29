@@ -29,6 +29,8 @@ func use_item(player : FirstPersonCharacterBase) -> void:
 				print("additional checks passed")
 				inter.cached_collider.set_indexed(desired_property_name, desired_value)
 				print("Set property [%s] to [%s] on node [%s]" % [str(desired_property_name),str(desired_value),str(inter.cached_collider),])
+		else:
+			player.set_held_item(null)
 	else:
 		player.set_held_item(null) # should call the remove_item func
 

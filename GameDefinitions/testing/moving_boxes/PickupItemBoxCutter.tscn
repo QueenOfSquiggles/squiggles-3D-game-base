@@ -7,8 +7,6 @@
 extents = Vector3( 1.16466, 0.221881, 0.0601361 )
 
 [node name="PickupItemBoxCutter" instance=ExtResource( 1 )]
-contacts_reported = 4
-contact_monitor = true
 static_mode_style = 2
 world_scale = Vector3( 3, 3, 3 )
 held_scale = Vector3( 2, 2, 2 )
