@@ -131,6 +131,16 @@ func does_save_data_exist() -> bool:
 	file.close()
 	return flag
 
+func does_save_data_exist_for(scene_name : String = "") -> bool:
+	var path :=get_save_name_for(scene_name)
+	var file := open_file(path, File.READ)
+	if not file:
+		return false
+	var flag := file.file_exists(path)
+	file.close()
+	return flag
+
+
 func load_save_data() -> void:
 	var file := open_file(get_current_save_name(), File.READ)
 	if not file:
@@ -220,6 +230,8 @@ func ensure_filepath(path : String) -> void:
 	var err := dir.make_dir_recursive(path)
 	assert(err == OK, "Something failed with creating the path")
 
+func get_save_name_for(scene_name : String = "", suffix : String = "") -> String:
+	return get_current_save_dir() + scene_name + suffix + SAVE_FILE_TYPE
 
 func get_current_save_name(suffix : String = "") -> String:
 	"""
@@ -228,7 +240,7 @@ func get_current_save_name(suffix : String = "") -> String:
 	It's all automagic :3
 	"""
 	var scene_name := get_tree().current_scene.name
-	return get_current_save_dir() + scene_name + suffix + SAVE_FILE_TYPE
+	return get_save_name_for(scene_name, suffix)
 
 func get_current_save_dir() -> String:
 	return SAVE_PATH_PREFIX + custom_save_suffix

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SphereMesh" id=1]
+flip_faces = true
+height = 1.0
+is_hemisphere = true
+
+[node name="SkySphere" type="MeshInstance"]
+portal_mode = 3
+include_in_bound = false
+cast_shadow = 0
+generate_lightmap = false
+mesh = SubResource( 1 )
+software_skinning_transform_normals = false
+material/0 = null

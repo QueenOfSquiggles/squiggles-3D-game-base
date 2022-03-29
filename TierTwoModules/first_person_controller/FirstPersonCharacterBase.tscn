@@ -102,6 +102,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
 [node name="Camera" type="Camera" parent="Pivot"]
 current = true
+far = 1000.0
 
 [node name="SelectionCast" type="RayCast" parent="Pivot/Camera"]
 enabled = true

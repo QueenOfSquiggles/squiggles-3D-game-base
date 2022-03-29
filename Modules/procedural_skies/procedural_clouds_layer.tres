@@ -1,0 +1,35 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type spatial;
+render_mode unshaded, cull_disabled;
+
+uniform sampler2D noise_texture : hint_white;
+uniform float cloud_density : hint_range(0.0, 1.0) = 0.3;
+uniform vec2 scroll_speed = vec2(0.01, -0.002);
+uniform vec2 uv_scaling = vec2(0.5, 1.0);
+uniform vec4 sky_colour : hint_color = vec4(0.0,0.0,1.0, 1.0);
+uniform vec4 cloud_colour : hint_color = vec4(1.0);
+uniform float cloud_cutoff : hint_range(0.0, 1.0) = 0.15;
+
+varying smooth vec2 scroll_uv;
+
+void vertex(){
+	scroll_uv = UV + scroll_speed * TIME;
+	scroll_uv *= uv_scaling;
+}
+
+
+void fragment(){
+	vec4 noise = texture(noise_texture, scroll_uv);
+	ALBEDO = cloud_colour.rgb; // just use vertex colour
+	
+	float frac = 1.0 / cloud_cutoff;
+	float height_test = min(UV.y * frac, 1.0);
+	float sample = noise.r / height_test;
+	if (sample > cloud_density) {
+		// alpha cut
+		discard;
+	}
+	
+}"

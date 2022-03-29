@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=1]
 [ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Globals/settings_management/DebugSetGraphicsSetting.tscn" type="PackedScene" id=6]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Modules/procedural_skies/CloudsLayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Globals/serialization/LevelSaver.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GameDefinitions/testing/moving_boxes/PickupMovingBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://GameDefinitions/testing/moving_boxes/PickupItemBoxCutter.tscn" type="PackedScene" id=13]
@@ -27,8 +28,9 @@ transform = Transform( 0.252475, 0, -0.967604, 0, 1, 0, 0.967604, 0, 0.252475, 1
 [node name="SettingsCompliantWorldEnvironment" parent="." instance=ExtResource( 4 )]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.58763, 0.430987, -0.684793, 0, 0.846333, 0.532655, 0.80913, -0.313004, 0.49733, 0, 3.76407, 13.888 )
+transform = Transform( 0.567586, 0.586395, -0.577917, -0.152169, 0.764562, 0.62633, 0.80913, -0.267555, 0.523186, 0, 3.76407, 13.888 )
 shadow_enabled = true
+directional_shadow_max_distance = 200.0
 
 [node name="DebugSetGraphicsSetting" parent="." instance=ExtResource( 6 )]
 graphics_preset = 0
@@ -439,3 +441,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0428, 15.9365, 37.8455 )
 
 [node name="PickupItemBoxCutter3" parent="Props" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0428, 13.4427, -10.4191 )
+
+[node name="CloudsLayer" parent="." instance=ExtResource( 8 )]
+transform = Transform( 200, 0, 0, 0, 200, 0, 0, 0, 200, 0, -11.8759, 0 )
