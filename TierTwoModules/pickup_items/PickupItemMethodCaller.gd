@@ -6,7 +6,7 @@ export (bool) var method_call_deferred := false
 func use_item(player : FirstPersonCharacterBase) -> void:
 	var inter := player.selection_raycast
 	var collider := inter.cached_collider
-	if collider:
+	if collider and is_instance_valid(collider):
 		if collider.has_method(method_to_call):
 			if method_call_deferred:
 				collider.call_deferred(method_to_call)

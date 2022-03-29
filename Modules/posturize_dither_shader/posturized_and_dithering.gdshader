@@ -74,6 +74,6 @@ void vertex(){
 void fragment() {
 	vec3 sample = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 	sample = dither(sample, (SCREEN_UV * screen_size), dither_offsets);
-	sample = posterize(sample, 0.9, num_colors);
+	sample = posterize(sample, 0.5, num_colors);
 	COLOR = vec4(sample, 1.0);
 }

@@ -10,8 +10,9 @@ func _physics_process(delta: float) -> void:
 	bt.tick_tree(delta)
 
 func play_animation(anim : String) -> void:
+	anim_player.stop()
 	anim_player.play(anim)
-	
+
 func set_held_item(item : Spatial) -> void:
 	if held_item_root.get_child_count() > 0:
 		var cur_item := held_item_root.get_child(0)

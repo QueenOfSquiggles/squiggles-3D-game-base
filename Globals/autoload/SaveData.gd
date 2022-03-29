@@ -15,25 +15,45 @@ const SAVE_FILE_TYPE := ".save"
 # A custom suffix for setting up a multiple saves system
 var custom_save_suffix := "save_slot/"
 
+const Y_DELETION_CUTOFF := -150.0
+
 # limits the number of objects removed per frame
 # this makes sure we don't have a massive stutter at the start of the level
 # this could be a const, but I like the idea that specific scenes can set their own rate based on needs unique to that scene
 var destructions_per_frame := 50
 
+var scene_cache := {}
+
 func get_save_data_for(node : Node) -> Dictionary:
 	"""
 	The general purpose save data manager
-
 	"""
-	#if node.filename.empty():
+	if node.filename.empty():
 		# node is not instanced. no save data
-	#	return {}
+		print("node [%s] skipped; no scene filename found" % str(node.name))
+		return {}
 
 	var data := {
+		# load basic save data
 		"node_path" : get_tree().current_scene.get_path_to(node),
+		"parent_path" : get_tree().current_scene.get_path_to(node.get_parent()),
+		"scene_file" : node.filename,
 		"node_name" : node.name,
-		"extra_data" : "tbd"
 	}
+	if node is Spatial:
+		# save data for all spatials
+		var spat := node as Spatial
+		data["translation"] = spat.translation
+		data["rotation"] = spat.rotation_degrees # use degress because parsing is lossy with floats and degrees will yield a higher accuracy
+		if spat.global_transform.origin.y < Y_DELETION_CUTOFF:
+			# don't save the object, treat as deleted
+			return {}
+	if node is RigidBody:
+		data["rigid_body_mode"] = (node as RigidBody).mode
+	if node.has_method("save_data"):
+		var node_data := node.save_data() as Dictionary
+		if node_data and not node_data.empty():
+			data["custom_data"] = node_data
 	return data
 
 func load_obj_from_data(data : Dictionary) -> void:
@@ -42,13 +62,43 @@ func load_obj_from_data(data : Dictionary) -> void:
 	"""
 	var node := get_tree().current_scene.get_node(data["node_path"])
 	if node and destruction_queue.has(node):
-		# remove this node from the destruction queue
-		# really all this does it on/off whether an object is present or not
-		# for simple games this is all I need
-		# more complex games would need more advanced functionality
+		# exists in scene already, simply do not delete
 		destruction_queue.erase(node)
-		#print("Loaded persistent object ", data["node_name"], " at path ", data["node_path"])
+	else:
+		var scene_file :String = data["scene_file"]
+		var packed : PackedScene
+		if scene_cache.has(scene_file):
+			packed = scene_cache[scene_file]
+		else:
+			packed = load(scene_file)
+			if not packed:
+				push_error("Failed to load scene data from path [%s]. Instanced object not loaded" % str(scene_file))
+				return
+			scene_cache[scene_file] = packed
+		node = packed.instance()
+		var dest_path : NodePath = data["parent_path"]
+		get_tree().current_scene.get_node(dest_path).add_child(node)
+		node.name = data["node_name"]
+	if node is Spatial:
+		apply_spatial_data(node, data)
+	if node is RigidBody:
+		(node as RigidBody).mode = int(data["rigid_body_mode"])
+	if node.has_method("load_save_data"):
+		node.load_save_data(data["custom_data"])
 
+func apply_spatial_data(node : Spatial, data : Dictionary)-> void:
+	# applys desired spatial data
+	node.translation = parse_vector3(data["translation"])
+	node.rotation_degrees = parse_vector3(data["rotation"])
+
+func parse_vector3(vec : String) -> Vector3:
+	vec = vec.substr(1, vec.length()-2)
+	var floats := vec.split_floats(",", false)
+	if floats.size() != 3:
+		push_error("input string [%s] was not valid to be parsed as a Vector3" % str(vec))
+	var result := Vector3(floats[0], floats[1], floats[2])
+	#print("Parsed [%s] -> [%s]" % [str(vec), str(result)])
+	return result
 
 """
 	Edit above to customize functionality
@@ -73,8 +123,6 @@ signal on_loading
 # a local queue for destruction. This is loaded
 var destruction_queue := []
 
-const RESOURCE_RESPAWN_PROBABILITY := 0.25
-
 func does_save_data_exist() -> bool:
 	var file := open_file(get_current_save_name(), File.READ)
 	if not file:
@@ -91,12 +139,15 @@ func load_save_data() -> void:
 	var line := file.get_line()
 	destruction_queue = get_persistant_objs()
 	while not line.empty():
+		var temp = JSON.parse(line).result
 		load_obj_from_data(parse_json(line))
 		line = file.get_line()
 	file.close()
 	if not destruction_queue.empty():
+		print("%s objects queued for deletion" % str(destruction_queue.size()))
 		set_process(true)
 	emit_signal("on_loading")
+	scene_cache.clear()
 
 func save_data() -> void:
 	var dir := Directory.new()
@@ -122,7 +173,10 @@ func get_persistant_objs() -> Array:
 	"""
 	just a helper method for getting the nodes in the persistent group
 	"""
-	return get_tree().get_nodes_in_group(PERSISTENT_OBJ_GROUP_NAME)
+	var objs := get_tree().get_nodes_in_group(PERSISTENT_OBJ_GROUP_NAME)
+	if objs.empty():
+		push_warning("no persistent objects found in current scene tree")
+	return objs
 
 func _process(_delta: float) -> void:
 	"""
@@ -136,13 +190,10 @@ func _process(_delta: float) -> void:
 	for i in range(num):
 		var entry :Node = destruction_queue[i]
 		if not is_instance_valid(entry):
+			push_warning("destruction queue item was not a valid instance [%s]" % str(entry))
 			continue
-		if randf() > RESOURCE_RESPAWN_PROBABILITY:
-			# eg 0.25 -> 75% chance removal
-			# so percentage still works as expected
-			entry.queue_free()
-		else:
-			print("Resource Respawn : ", entry.name, " -> ", entry)
+		print("Deleting entry [%s] [%s / %s]" % [str(entry), str(i), str(num)])
+		entry.queue_free()
 	for _i in range(num):
 		destruction_queue.remove(0)
 

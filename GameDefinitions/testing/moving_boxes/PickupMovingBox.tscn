@@ -7,8 +7,6 @@
 extents = Vector3( 0.530846, 0.563441, 0.540159 )
 
 [node name="PickupMovingBox" instance=ExtResource( 1 )]
-contacts_reported = 4
-contact_monitor = true
 world_scale = Vector3( 5, 5, 5 )
 held_scale = Vector3( 3, 3, 3 )
 scale_children = [ NodePath("cardboardBoxClosed") ]

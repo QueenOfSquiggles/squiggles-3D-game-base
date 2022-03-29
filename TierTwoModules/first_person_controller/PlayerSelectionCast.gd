@@ -14,14 +14,13 @@ var _timer := 0.0
 
 func _physics_process(delta: float) -> void:
 	if is_colliding():
-		var flag := not cached_collider
 		var temp := get_collider()
 		if temp.has_method("interact"):
-			cached_collider = get_collider()
-			_timer = cache_time
-			if flag and cached_collider:
+			if not temp == cached_collider:
 				emit_signal("on_start_collide_mt")
 				emit_signal("on_start_collide", cached_collider)
+			cached_collider = temp
+			_timer = cache_time
 	else:
 		if _timer > 0:
 			_timer -= delta

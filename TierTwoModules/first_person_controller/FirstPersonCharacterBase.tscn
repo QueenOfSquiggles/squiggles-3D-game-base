@@ -56,6 +56,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "end_can_interact"
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("internal_hud/Control/TextureRect:rect_scale")
 tracks/0/interp = 1
@@ -63,7 +65,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1e-05, 1e-05 ) ]
@@ -71,6 +73,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "start_can_interact"
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("internal_hud/Control/TextureRect:rect_scale")
 tracks/0/interp = 2
@@ -78,13 +82,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
 
-[node name="FirstPersonCharacterBase" type="KinematicBody" groups=["player"]]
+[node name="FirstPersonCharacterBase" type="KinematicBody" groups=["persist", "player"]]
 script = ExtResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
