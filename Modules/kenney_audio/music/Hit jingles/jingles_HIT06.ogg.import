@@ -11,5 +11,5 @@ dest_files=[ "res://.import/jingles_HIT06.ogg-ee5ae52a154a2c34e1f821e552a86709.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -13,15 +13,18 @@ script = ExtResource( 1 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="impact"]
 stream = ExtResource( 2 )
+bus = "SoundEffects"
 
 [node name="pickup" type="Spatial" parent="."]
 script = ExtResource( 1 )
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="pickup"]
 stream = ExtResource( 3 )
+bus = "SoundEffects"
 
 [node name="drop" type="Spatial" parent="."]
 script = ExtResource( 1 )
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="drop"]
 stream = ExtResource( 4 )
+bus = "SoundEffects"
