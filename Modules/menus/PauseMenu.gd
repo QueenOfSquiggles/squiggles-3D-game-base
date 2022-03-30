@@ -6,7 +6,6 @@ export (String) var options_menu_path := "res://Modules/menus/OptionsMenu.tscn"
 export (String) var main_menu_path := "res://Modules/menus/MainMenu.tscn"
 
 func _on_PauseMenu_about_to_show() -> void:
-	print("About to show")
 	Globals.set_paused(true)
 	Globals.unlock_mouse()
 
@@ -23,11 +22,9 @@ func change_scene(path : String) -> void:
 	self.hide()
 	Globals.unlock_mouse()
 	SaveData.save_data()
-	print("changing scene to ", path)
 	SceneManagement.load_scene(path)
 
 func _on_PauseMenu_popup_hide() -> void:
-	print("popup hide")
 	Globals.set_paused(false)
 	Globals.lock_mouse()
 

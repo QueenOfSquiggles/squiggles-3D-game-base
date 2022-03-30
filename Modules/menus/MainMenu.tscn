@@ -114,6 +114,17 @@ margin_right = 233.0
 margin_bottom = 50.0
 text = "A game by QueenOfSquiggles (2022)"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 334.0
+margin_top = 89.0
+margin_right = 840.0
+margin_bottom = 129.0
+bbcode_enabled = true
+bbcode_text = "[wave] THIS REALLY NEEDS A GOOD TITLE BUT FOR NOW THIS IS ALL I'VE GOT :D [/wave]"
+text = " THIS REALLY NEEDS A GOOD TITLE BUT FOR NOW THIS IS ALL I'VE GOT :D "
+fit_content_height = true
+scroll_active = false
+
 [connection signal="pressed" from="GameButtons/VBoxContainer/BtnContinue" to="." method="_on_BtnContinue_pressed"]
 [connection signal="pressed" from="GameButtons/VBoxContainer/BtnNewGame" to="." method="_on_BtnNewGame_pressed"]
 [connection signal="pressed" from="GameButtons/VBoxContainer/BtnOptions" to="." method="_on_BtnOptions_pressed"]

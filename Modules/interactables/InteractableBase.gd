@@ -2,5 +2,5 @@ extends Area
 
 
 
-func interact(source : Node) -> void:
+func interact(_source : Node) -> void:
 	pass

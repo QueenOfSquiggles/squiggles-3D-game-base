@@ -7,12 +7,12 @@ func _ready() -> void:
 	if owner_viewport and get_node(owner_viewport):
 		var viewport := get_node(owner_viewport) as Viewport
 		if viewport:
-			viewport.connect("size_changed", self, "on_screen_changed")
+			var _clear = viewport.connect("size_changed", self, "on_screen_changed")
 		else:
-			get_tree().connect("screen_resized", self, "on_screen_changed")
+			var _clear = get_tree().connect("screen_resized", self, "on_screen_changed")
 	else:
-		get_tree().connect("screen_resized", self, "on_screen_changed")
-	Settings.connect("refresh_settings", self, "update_use")
+		var _clear = get_tree().connect("screen_resized", self, "on_screen_changed")
+	var _clear = Settings.connect("refresh_settings", self, "update_use")
 	update_use()
 
 func on_screen_changed() -> void:

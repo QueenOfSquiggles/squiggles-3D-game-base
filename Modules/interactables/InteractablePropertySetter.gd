@@ -27,7 +27,7 @@ var index_dir := 1
 func _ready() -> void:
 	randomize()
 
-func interact(source : Node) -> void:
+func interact(_source : Node) -> void:
 	var value = property_values_array[cur_index]
 	match (property_mode):
 		PropertyMode.ARRAY_FORWARDS:

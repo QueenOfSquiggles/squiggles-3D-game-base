@@ -149,7 +149,6 @@ func load_save_data() -> void:
 	var line := file.get_line()
 	destruction_queue = get_persistant_objs()
 	while not line.empty():
-		var temp = JSON.parse(line).result
 		load_obj_from_data(parse_json(line))
 		line = file.get_line()
 	file.close()

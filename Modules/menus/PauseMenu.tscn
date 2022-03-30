@@ -4,7 +4,6 @@
 
 [node name="PauseMenu" type="Popup"]
 pause_mode = 2
-visible = true
 margin_right = 133.0
 margin_bottom = 124.0
 popup_exclusive = true
