@@ -1,6 +1,9 @@
 extends Node
 class_name GraphicsPresets
 
+const ID_PRESET_LOW := 0
+const ID_PRESET_MEDIUM := 0
+const ID_PRESET_HIGH := 0
 
 const PRESET_LOW := {
 	"viewport_msaa" : Viewport.MSAA_DISABLED,
@@ -31,3 +34,13 @@ static func apply_preset(preset : Dictionary) -> void:
 	for key in preset.keys():
 		Settings.set_indexed(key, preset[key])
 	Settings.reload_settings()
+
+static func apply_preset_id(id : int) -> void:
+	match(id):
+		ID_PRESET_LOW:
+			apply_preset(PRESET_LOW)
+		ID_PRESET_MEDIUM:
+			apply_preset(PRESET_MEDIUM)
+		ID_PRESET_HIGH:
+			apply_preset(PRESET_HIGH)
+	

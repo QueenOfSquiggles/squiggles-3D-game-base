@@ -1,4 +1,4 @@
-extends "res://InteractablePropertySetter.gd"
+extends "res://Modules/interactables/InteractablePropertySetter.gd"
 
 enum EaseType {
 	EASE_IN = 0,

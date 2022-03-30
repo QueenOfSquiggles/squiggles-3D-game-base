@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Modules/menus/OptionsMenu.gd" type="Script" id=1]
 [ext_resource path="res://Modules/menus/BtnSocial.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Modules/menus/options_menu_parts/AudioBusVolumeSlider.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Modules/menus/options_menu_parts/GraphicsSettingsContent.tscn" type="PackedScene" id=4]
 
 [node name="OptionsMenu" type="VBoxContainer"]
 anchor_right = 1.0
@@ -45,7 +46,7 @@ margin_bottom = 507.0
 [node name="Label" type="Label" parent="OptionsCategories/Pages/Gameplay/VBoxContainer"]
 margin_right = 988.0
 margin_bottom = 14.0
-text = "This is a text label. WOOO!"
+text = "There's nothing here yet"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsCategories/Pages/Gameplay/VBoxContainer"]
@@ -64,7 +65,10 @@ margin_bottom = -4.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_horizontal = 3
 
+[node name="GraphicsSettingsContent" parent="OptionsCategories/Pages/Graphics" instance=ExtResource( 4 )]
+
 [node name="Audio" type="PanelContainer" parent="OptionsCategories/Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -132,7 +136,6 @@ audio_bus_index = 4
 label_text = "Misc"
 
 [node name="Controls" type="PanelContainer" parent="OptionsCategories/Pages"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -141,6 +144,14 @@ margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="OptionsCategories/Pages/Controls"]
+margin_left = 7.0
+margin_top = 250.0
+margin_right = 995.0
+margin_bottom = 264.0
+text = "Nothing here yet"
+align = 1
 
 [node name="Stream & Tube Info" type="PanelContainer" parent="OptionsCategories/Pages"]
 visible = false

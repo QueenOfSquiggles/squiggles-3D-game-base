@@ -32,3 +32,12 @@ func unlock_mouse() -> void:
 func lock_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+
+"""
+
+		Pausing
+
+"""
+
+func set_paused(is_paused : bool) -> void:
+	get_tree().paused = is_paused

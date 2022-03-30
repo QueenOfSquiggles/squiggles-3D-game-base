@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Modules/posturize_dither_shader/posturized_and_dithering.gdshader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/num_colors = 8.0
+shader_param/pixelate_amount = 1.0
+shader_param/screen_size = Vector2( 1024, 600 )
+shader_param/motion_scale = 0.0
+shader_param/threshold_succeed_value = 1.0
+shader_param/threshold_fail_value = 0.3
+shader_param/threshold_bias = 0.0

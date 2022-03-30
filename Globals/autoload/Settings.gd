@@ -13,6 +13,8 @@ signal refresh_settings
 
 var fullscreen := false
 
+var use_retro_filter := true
+
 var viewport_msaa := Viewport.MSAA_4X
 
 var world_environment := {
