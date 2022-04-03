@@ -8,7 +8,7 @@
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=6]
 [ext_resource path="res://GameDefinitions/testing/PickupItems/PickupCouch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Modules/procedural_skies/CloudsLayer.tscn" type="PackedScene" id=8]
-[ext_resource path="res://GameDefinitions/testing/moving_boxes/PickupMovingBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://GameDefinitions/testing/PickupItems/PickupMovingBox_Couch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=11]
 [ext_resource path="res://GameDefinitions/testing/data_files/data.hterrain" type="Resource" id=12]
 [ext_resource path="res://GameDefinitions/testing/moving_boxes/PickupItemBoxCutter.tscn" type="PackedScene" id=13]
@@ -395,7 +395,7 @@ packed_scene_to_gen = ExtResource( 7 )
 
 [node name="ItemGenerator2" parent="Props" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2387, 0.45442, 23.1093 )
-packed_scene_to_gen = ExtResource( 10 )
+packed_scene_to_gen = ExtResource( 9 )
 
 [node name="ItemGenerator3" parent="Props" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1159, 0.45442, 23.1093 )

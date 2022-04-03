@@ -20,4 +20,5 @@ func _on_Timer_timeout() -> void:
 			# clear original parent so it doesn't return
 			(inst as PickupItemBase).original_parent = get_tree().current_scene
 			inst.scale *= 0.5
+			(inst as PickupItemBase).mode = RigidBody.MODE_KINEMATIC
 	timer.start()

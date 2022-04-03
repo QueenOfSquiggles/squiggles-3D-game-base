@@ -65,7 +65,7 @@ tracks/1/keys = {
 [node name="ItemGenerator" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="StaticBody" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0563674, 0.0716271, -0.0394573 )
