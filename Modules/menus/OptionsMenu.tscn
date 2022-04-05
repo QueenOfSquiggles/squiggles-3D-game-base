@@ -39,6 +39,7 @@ use_hidden_tabs_for_min_size = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
+margin_top = 8.0
 margin_right = -4.0
 margin_bottom = -4.0
 rect_min_size = Vector2( 0, 200 )
@@ -48,7 +49,7 @@ size_flags_horizontal = 3
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 995.0
-margin_bottom = 503.0
+margin_bottom = 495.0
 
 [node name="Label" type="Label" parent="OptionsCategories/Pages/Gameplay/VBoxContainer"]
 margin_right = 988.0

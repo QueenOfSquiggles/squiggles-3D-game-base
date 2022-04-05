@@ -15,7 +15,7 @@ func _generate_tab_buttons() -> void:
 		tab_buttons.add_child(btn)
 		btn.text = tab.name
 		btn.size_flags_horizontal = SIZE_EXPAND_FILL
-		btn.connect("pressed", self, "_tab_button_pressed", [tab.get_index()])
+		var _clear = btn.connect("pressed", self, "_tab_button_pressed", [tab.get_index()])
 
 func _tab_button_pressed(index : int) -> void:
 	print("Button index %s was pressed" % str(index))
