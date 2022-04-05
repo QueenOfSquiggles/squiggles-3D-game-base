@@ -1,0 +1,119 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=2]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Modules/posturize_dither_shader/conversion_layer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Modules/posturize_dither_shader/conversion_layer_material.tres" type="Material" id=6]
+[ext_resource path="res://Modules/posturize_dither_shader/ConversionLayer.gd" type="Script" id=7]
+[ext_resource path="res://Modules/environment/SettingsCompliantWorldEnvironment.gd" type="Script" id=8]
+[ext_resource path="res://Modules/environment/SettingsCompliantWorldEnvironment.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Modules/menus/options_menu_parts/demo_world/data.hterrain" type="Resource" id=10]
+[ext_resource path="res://Modules/procedural_skies/CloudsLayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Modules/procedural_skies/procedural_clouds_layer.tres" type="Shader" id=12]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+mode = 0
+textures = [ [  ], [  ] ]
+
+[sub_resource type="SphereMesh" id=4]
+height = 1.0
+is_hemisphere = true
+
+[sub_resource type="OpenSimplexNoise" id=2]
+period = 32.0
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 12 )
+shader_param/cloud_density = 0.428
+shader_param/scroll_speed = Vector2( 0.001, 0.002 )
+shader_param/uv_scaling = Vector2( 1, 2.4 )
+shader_param/sky_colour = Color( 0, 0, 1, 1 )
+shader_param/cloud_colour = Color( 1, 1, 1, 1 )
+shader_param/cloud_cutoff = 0.08
+shader_param/noise_texture = SubResource( 3 )
+
+[sub_resource type="SphereMesh" id=8]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.796078, 0.760784, 0.2, 1 )
+metallic = 1.0
+roughness = 0.35
+
+[node name="ViewportContainer" type="ViewportContainer"]
+margin_left = 110.5
+margin_right = 610.5
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 500 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 500, 500 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ConversionLayer" type="TextureRect" parent="Viewport" instance=ExtResource( 5 )]
+material = ExtResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+script = ExtResource( 7 )
+owner_viewport = NodePath("..")
+retro_filter_mat = ExtResource( 6 )
+
+[node name="SettingsCompliantWorldEnvironment" type="WorldEnvironment" parent="Viewport" instance=ExtResource( 9 )]
+environment = ExtResource( 1 )
+script = ExtResource( 8 )
+
+[node name="Spatial" type="Spatial" parent="Viewport"]
+
+[node name="HTerrain" type="Spatial" parent="Viewport/Spatial"]
+script = ExtResource( 2 )
+_terrain_data = ExtResource( 10 )
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 1 )
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.96026, -0.279108, 0, 0.279108, 0.96026, 174.353, 38.763, 349.397 )
+far = 500.0
+
+[node name="CloudsLayer" type="MeshInstance" parent="Viewport/Spatial" instance=ExtResource( 11 )]
+transform = Transform( 300, 0, 0, 0, 300, 0, 0, 0, 300, 246.406, 0, 235.529 )
+portal_mode = 3
+include_in_bound = false
+cast_shadow = 2
+generate_lightmap = false
+mesh = SubResource( 4 )
+software_skinning_transform_normals = false
+material/0 = SubResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Viewport/Spatial"]
+transform = Transform( 0.467806, -0.516653, 0.717096, 0, 0.81135, 0.584561, -0.883831, -0.273461, 0.379555, 266.612, 104.091, 236.867 )
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="MeshInstance" type="MeshInstance" parent="Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 179.178, 38.763, 341.163 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 7 )

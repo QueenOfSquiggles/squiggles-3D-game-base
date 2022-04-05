@@ -120,8 +120,8 @@ margin_top = 89.0
 margin_right = 840.0
 margin_bottom = 129.0
 bbcode_enabled = true
-bbcode_text = "[wave] THIS REALLY NEEDS A GOOD TITLE BUT FOR NOW THIS IS ALL I'VE GOT :D [/wave]"
-text = " THIS REALLY NEEDS A GOOD TITLE BUT FOR NOW THIS IS ALL I'VE GOT :D "
+bbcode_text = "[wave] The Move-In Friend Alpha Version [/wave]"
+text = " The Move-In Friend Alpha Version "
 fit_content_height = true
 scroll_active = false
 

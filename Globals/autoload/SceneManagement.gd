@@ -20,10 +20,11 @@ func _ready() -> void:
 
 func load_scene(path : String, use_loading_screen : bool = false) -> void:
 	"""
-	Doesn't use a loading screen by default because we should know whether or not the
+	Doesn't use a loading screen by default because we should know whether or not the scene we are loading is big enough to require one
 	"""
 	var anim := scene_transition.get_node("AnimationPlayer") as AnimationPlayer
 	anim.play("fade_out")
+	Subtitles.clear_subtitles()
 	if use_loading_screen:
 		_load_gradual(path)
 	else:
@@ -33,8 +34,10 @@ func load_scene(path : String, use_loading_screen : bool = false) -> void:
 
 func _load_instant(path: String) -> void:
 	var err := get_tree().change_scene(path)
+	Subtitles.subtitles_enabled = Settings.subtitles_enabled
+	Subtitles.clear_subtitles()
 	if err != OK:
-		push_error("Failed to change scene to %s; Error = %s" % [path, str(err)])
+		push_error("Failed to change scene to %s; Error = %s" % [path, str(err)])	
 
 var loader : ResourceInteractiveLoader
 var loading_title : String = "not_filled"
@@ -45,6 +48,7 @@ const time_max := 10
 var current_scene
 
 func _load_gradual(path: String) -> void:
+	Subtitles.subtitles_enabled = false
 	current_loading_scene_name = path
 	current_scene = get_tree().current_scene
 	loader = ResourceLoader.load_interactive(path)

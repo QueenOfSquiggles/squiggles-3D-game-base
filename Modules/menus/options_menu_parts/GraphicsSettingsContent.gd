@@ -1,4 +1,6 @@
-extends HBoxContainer
+extends HSplitContainer
+
+export (PackedScene) var demo_world_packed : PackedScene
 
 onready var preset : OptionButton = $VBoxContainer/HBoxContainer3/OptionPresets
 onready var fullscreen : CheckBox = $VBoxContainer/HBoxContainer/CheckFullscreen
@@ -8,6 +10,8 @@ onready var glow : CheckBox = $VBoxContainer/PanelContainer/VBoxContainer/CheckG
 onready var ssao : CheckBox = $VBoxContainer/PanelContainer/VBoxContainer/CheckSSAO
 onready var ssr : CheckBox = $VBoxContainer/PanelContainer/VBoxContainer/CheckSSR
 
+
+onready var demo_world_root := $"AspectRatioContainer"
 
 func _ready() -> void:
 	# preset options
@@ -47,3 +51,13 @@ func _on_BtnApply_pressed() -> void:
 		GraphicsPresets.apply_preset_id(preset_id)
 	Settings.reload_settings()
 	update_options_from_settings()
+
+func _handle_visibility() -> void:
+	if get_parent().visible:
+		if demo_world_root.get_child_count() <= 0:
+			var inst : Control = demo_world_packed.instance()
+			if inst:
+				demo_world_root.add_child(inst)
+	else:
+		for c in demo_world_root.get_children():
+			c.queue_free()

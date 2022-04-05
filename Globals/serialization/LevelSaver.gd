@@ -1,7 +1,7 @@
 extends Node
 
 func _ready() -> void:
-	get_parent().connect("ready", self, "load_save_data")
+	var _clear = get_parent().connect("ready", self, "load_save_data")
 
 func save_data() -> void:
 	SaveData.save_data()

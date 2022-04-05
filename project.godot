@@ -154,11 +154,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Globals/scene_management/LoadingScreen.gd"
 }, {
-"base": "PanelContainer",
-"class": "LogContainer",
-"language": "GDScript",
-"path": "res://addons/hyperlog/log_container.gd"
-}, {
 "base": "RigidBody",
 "class": "PickupItemBase",
 "language": "GDScript",
@@ -184,45 +179,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Modules/godot_splash_screens/splash/Splash.gd"
 }, {
+"base": "Node",
+"class": "SubtitleData",
+"language": "GDScript",
+"path": "res://addons/subtitles/scenes/SubtitleData.gd"
+}, {
+"base": "CanvasLayer",
+"class": "SubtitlesLayer2D",
+"language": "GDScript",
+"path": "res://addons/subtitles/scenes/SubtitlesLayer2D.gd"
+}, {
+"base": "CanvasLayer",
+"class": "SubtitlesLayer3D",
+"language": "GDScript",
+"path": "res://addons/subtitles/scenes/SubtitlesLayer3D.gd"
+}, {
+"base": "CanvasLayer",
+"class": "SubtitlesLayerDialogue",
+"language": "GDScript",
+"path": "res://addons/subtitles/scenes/SubtitlesLayerDialogue.gd"
+}, {
 "base": "Decorator",
 "class": "TimeLimiterDecorator",
 "language": "GDScript",
 "path": "res://Modules/behaviour_tree/nodes/decorators/time_limiter.gd"
-}, {
-"base": "Control",
-"class": "Tracker",
-"language": "GDScript",
-"path": "res://addons/hyperlog/trackers/tracker.gd"
-}, {
-"base": "Tracker",
-"class": "TrackerAngle",
-"language": "GDScript",
-"path": "res://addons/hyperlog/trackers/tracker_angle.gd"
-}, {
-"base": "Tracker",
-"class": "TrackerBar",
-"language": "GDScript",
-"path": "res://addons/hyperlog/trackers/tracker_bar.gd"
-}, {
-"base": "Tracker",
-"class": "TrackerColor",
-"language": "GDScript",
-"path": "res://addons/hyperlog/trackers/tracker_color.gd"
-}, {
-"base": "Tracker",
-"class": "TrackerGraph",
-"language": "GDScript",
-"path": "res://addons/hyperlog/trackers/tracker_graph.gd"
-}, {
-"base": "Tracker",
-"class": "TrackerText",
-"language": "GDScript",
-"path": "res://addons/hyperlog/trackers/tracker_text.gd"
-}, {
-"base": "Resource",
-"class": "ValueTracker",
-"language": "GDScript",
-"path": "res://addons/hyperlog/value_tracker.gd"
 } ]
 _global_script_class_icons={
 "ActionLeaf": "res://Modules/behaviour_tree/icons/action.svg",
@@ -254,20 +234,16 @@ _global_script_class_icons={
 "Leaf": "res://Modules/behaviour_tree/icons/action.svg",
 "LimiterDecorator": "res://Modules/behaviour_tree/icons/limiter.svg",
 "LoadingScreen": "",
-"LogContainer": "",
 "PickupItemBase": "",
 "PickupItemContainer": "",
 "SelectorComposite": "res://Modules/behaviour_tree/icons/selector.svg",
 "SequenceComposite": "res://Modules/behaviour_tree/icons/sequencer.svg",
 "Splash": "",
-"TimeLimiterDecorator": "res://Modules/behaviour_tree/icons/limiter.svg",
-"Tracker": "",
-"TrackerAngle": "",
-"TrackerBar": "",
-"TrackerColor": "",
-"TrackerGraph": "",
-"TrackerText": "",
-"ValueTracker": ""
+"SubtitleData": "",
+"SubtitlesLayer2D": "",
+"SubtitlesLayer3D": "",
+"SubtitlesLayerDialogue": "",
+"TimeLimiterDecorator": "res://Modules/behaviour_tree/icons/limiter.svg"
 }
 
 [application]
@@ -278,12 +254,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
-HyperLog="*res://addons/hyperlog/hyperlog.tscn"
 SceneManagement="*res://Globals/autoload/SceneManagement.gd"
 SaveData="*res://Globals/autoload/SaveData.gd"
 Settings="*res://Globals/autoload/Settings.gd"
 LocksManager="*res://Globals/autoload/LocksManager.gd"
 Globals="*res://Globals/autoload/Globals.gd"
+Subtitles="*res://addons/subtitles/scenes/Subtitles.gd"
 
 [display]
 
@@ -291,7 +267,7 @@ window/vsync/use_vsync=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/hyperlog/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/scatter/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/scatter/plugin.cfg", "res://addons/subtitles/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
 
 [importer_defaults]
 

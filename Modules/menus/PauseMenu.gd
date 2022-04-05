@@ -8,6 +8,7 @@ export (String) var main_menu_path := "res://Modules/menus/MainMenu.tscn"
 func _on_PauseMenu_about_to_show() -> void:
 	Globals.set_paused(true)
 	Globals.unlock_mouse()
+	Subtitles.hide()
 
 func _on_BtnResume_pressed() -> void:
 	self.hide()
@@ -27,6 +28,7 @@ func change_scene(path : String) -> void:
 func _on_PauseMenu_popup_hide() -> void:
 	Globals.set_paused(false)
 	Globals.lock_mouse()
+	Subtitles.show()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(pause_input):

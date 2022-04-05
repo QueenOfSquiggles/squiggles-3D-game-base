@@ -41,7 +41,6 @@ func _ready() -> void:
 			self.mode = RigidBody.MODE_STATIC
 	if not audio_lib:
 		push_warning("PickupItem [%s] does not have an AudioLib3D set" % self.name)
-		
 
 func interact(player : FirstPersonCharacterBase) -> void:
 	player.set_held_item(self)

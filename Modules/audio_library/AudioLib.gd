@@ -12,4 +12,3 @@ func play(name : String = "") -> void:
 			if c.name == name:
 				assert(c.has_method("play"), "Children of an AudioLib must have a valid 'play' function")
 				c.play()
-		

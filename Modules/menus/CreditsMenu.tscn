@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Modules/menus/BtnSocial.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Modules/menus/CreditsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Modules/menus/utility/DefaultSelectControl.tscn" type="PackedScene" id=3]
 
 [node name="CreditsMenu" type="Control"]
 anchor_right = 1.0
@@ -36,6 +37,8 @@ margin_right = 304.0
 margin_bottom = 564.0
 rect_min_size = Vector2( 0, 64 )
 text = "Return to Main Menu"
+
+[node name="DefaultSelectControl" parent="HBoxContainer/VBoxContainer3/BtnMainMenu" instance=ExtResource( 3 )]
 
 [node name="Control" type="Control" parent="HBoxContainer/VBoxContainer3"]
 margin_top = 568.0

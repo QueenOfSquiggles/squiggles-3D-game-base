@@ -2,6 +2,25 @@ extends Control
 
 export (String) var main_menu_path : String
 
+onready var pages := $"OptionsCategories/Pages"
+onready var tab_buttons := $Tabs
+
+func _ready() -> void:
+	_generate_tab_buttons()
+	
+func _generate_tab_buttons() -> void:
+	var tabs := pages.get_children()
+	for tab in tabs:
+		var btn := Button.new()
+		tab_buttons.add_child(btn)
+		btn.text = tab.name
+		btn.size_flags_horizontal = SIZE_EXPAND_FILL
+		btn.connect("pressed", self, "_tab_button_pressed", [tab.get_index()])
+
+func _tab_button_pressed(index : int) -> void:
+	print("Button index %s was pressed" % str(index))
+	pages.current_tab = index
+	
 func _on_BtnMainMenu_pressed() -> void:
 	SceneManagement.load_scene(main_menu_path)
 

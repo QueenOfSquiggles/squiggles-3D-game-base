@@ -9,9 +9,13 @@ onready var label : Label = $Label
 onready var slider := $HSlider
 onready var muter := $CheckBox
 
+var bus_name : String
+
 func _ready() -> void:
-	audio.bus = AudioServer.get_bus_name(audio_bus_index)
+	bus_name = AudioServer.get_bus_name(audio_bus_index)
+	audio.bus = bus_name
 	label.text = label_text
+	
 func set_label_text(value : String) -> void:
 	label_text = value
 	if not label:
@@ -19,17 +23,18 @@ func set_label_text(value : String) -> void:
 	label.text = label_text
 
 func _on_HSlider_value_changed(value: float) -> void:
+	Settings.audio_bus[bus_name].volume = value
 	AudioServer.set_bus_volume_db(audio_bus_index, value)
 
-
 func _on_CheckBox_toggled(button_pressed: bool) -> void:
+	Settings.audio_bus[bus_name].muted = button_pressed
 	AudioServer.set_bus_mute(audio_bus_index, button_pressed)
-
 
 func _on_BtnTest_pressed() -> void:
 	audio.play()
 
-
 func _on_BtnReset_pressed() -> void:
 	slider.value = 0
 	muter.pressed = false
+	Settings.audio_bus[bus_name].volume = 0
+	Settings.audio_bus[bus_name].muted = false

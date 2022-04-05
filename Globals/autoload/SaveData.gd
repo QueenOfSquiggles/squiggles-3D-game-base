@@ -60,7 +60,7 @@ func load_obj_from_data(data : Dictionary) -> void:
 	"""
 	This method loads in the data and possibly nodes from the data depending on desired functionality
 	"""
-	var node := get_tree().current_scene.get_node(data["node_path"])
+	var node := get_tree().current_scene.get_node_or_null(data["node_path"])
 	if node and destruction_queue.has(node):
 		# exists in scene already, simply do not delete
 		destruction_queue.erase(node)
