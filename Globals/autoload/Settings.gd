@@ -13,13 +13,13 @@ signal refresh_settings
 
 var fullscreen := false
 var use_retro_filter := true
-var viewport_msaa := Viewport.MSAA_4X
-var subtitles_enabled := true
+var viewport_msaa := Viewport.MSAA_DISABLED
+var subtitles_enabled := false
 
 var world_environment := {
 	"glow_enabled" : true,
-	"ssao_enabled" : true,
-	"ss_reflections_enabled" : true,
+	"ssao_enabled" : false,
+	"ss_reflections_enabled" : false,
 }
 
 var audio_bus := {

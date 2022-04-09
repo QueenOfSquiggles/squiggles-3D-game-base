@@ -338,7 +338,6 @@ text = "Main Menu"
 [node name="DefaultSelectControl" parent="BtnMainMenu" instance=ExtResource( 6 )]
 
 [connection signal="visibility_changed" from="OptionsCategories/Pages/Graphics" to="OptionsCategories/Pages/Graphics/GraphicsSettingsContent" method="_handle_visibility" flags=3]
-[connection signal="mouse_entered" from="OptionsCategories/Pages/Audio/PanelContainer/VBoxContainer/HBoxContainer/SubtitlesEnable" to="OptionsCategories/Pages/Audio/PanelContainer/VBoxContainer/HBoxContainer/SubtitlesEnable" method="_on_SubtitlesEnable_mouse_entered"]
 [connection signal="toggled" from="OptionsCategories/Pages/Audio/PanelContainer/VBoxContainer/HBoxContainer/SubtitlesEnable" to="OptionsCategories/Pages/Audio/PanelContainer/VBoxContainer/HBoxContainer/SubtitlesEnable" method="_on_SubtitlesEnable_toggled"]
 [connection signal="pressed" from="OptionsCategories/Pages/Danger Zone/VBoxContainer/HBoxContainer/BtnDeleteSaveData" to="." method="_on_BtnDeleteSaveData_pressed"]
 [connection signal="pressed" from="BtnMainMenu" to="." method="_on_BtnMainMenu_pressed"]

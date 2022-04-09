@@ -19,7 +19,7 @@ enum StaticStyle {
 
 export (RigidModeStart) var rigid_mode_start := RigidModeStart.RIGID_UNTIL_PICKUP
 export (StaticStyle) var static_mode_style := StaticStyle.ONLY_AFTER_DROPPED
-export (bool) var keep_rotation := false
+export (bool) var keep_rotation := true
 export (String) var sfx_impact := "impact"
 export (String) var sfx_pickup := "pickup"
 export (String) var sfx_drop := "drop"

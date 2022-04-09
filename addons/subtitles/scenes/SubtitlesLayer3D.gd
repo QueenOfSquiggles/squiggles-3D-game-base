@@ -41,6 +41,8 @@ func _update_subtitle_position(panel : PanelContainer, cam : Camera) -> void:
 		return
 	if _position_mapping.has(panel.name):
 		var position : Spatial = _position_mapping[panel.name]
+		if not is_instance_valid(position):
+			panel.queue_free()
 		var pos_calc := cam.unproject_position(position.global_transform.origin)
 		pos_calc = _apply_cam_angles(cam, position, pos_calc, panel)
 		panel.rect_position = _clamp_subtitle_pos(panel, pos_calc)

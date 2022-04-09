@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Modules/blockout_assets/prototyping/materials/proto_mat_dark_01.tres" type="Material" id=1]
 [ext_resource path="res://TierTwoModules/first_person_controller/FirstPersonCharacterBase.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://GameDefinitions/testing/interactables/WorldLightSwitch.tscn" type="PackedScene" id=14]
 [ext_resource path="res://TierTwoModules/pickup_items/ItemGenerator.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Modules/menus/PauseMenu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Modules/animation/xbot_idle_simple.tscn" type="PackedScene" id=17]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -40,7 +41,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 200.0
 
 [node name="FirstPersonCharacterBase" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.252475, 0, -0.967604, 0, 1, 0, 0.967604, 0, 0.252475, 260.749, 29.3162, 283.193 )
+transform = Transform( 0.252475, 0, -0.967604, 0, 1, 0, 0.967604, 0, 0.252475, 235.037, 27.1116, 274.541 )
 
 [node name="House" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 243.549, 27.0917, 249.18 )
@@ -506,3 +507,9 @@ height = 231.132
 depth = 461.181
 
 [node name="PauseMenu" parent="." instance=ExtResource( 16 )]
+
+[node name="AnimTests" type="Spatial" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 230.265, 27.1715, 269.164 )
+
+[node name="xbot_idle_simple" parent="AnimTests" instance=ExtResource( 17 )]
+transform = Transform( 0.264159, 0, 0.964479, 0, 1, 0, -0.964479, 0, 0.264159, 0, 0, 0 )
