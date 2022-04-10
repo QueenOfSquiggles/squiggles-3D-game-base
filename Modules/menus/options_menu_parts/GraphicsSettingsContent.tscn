@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Modules/menus/options_menu_parts/GraphicsSettingsContent.gd" type="Script" id=1]
 [ext_resource path="res://Modules/menus/options_menu_parts/DemoWorldView.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Modules/menus/ui_sounds/UiSoundPack.tscn" type="PackedScene" id=3]
 
 [node name="GraphicsSettingsContent" type="HSplitContainer"]
 margin_left = 7.0
@@ -35,6 +36,8 @@ margin_right = 255.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
+[node name="UiSoundPack" parent="VBoxContainer/HBoxContainer3/OptionPresets" instance=ExtResource( 3 )]
+
 [node name="Control" type="Control" parent="VBoxContainer"]
 margin_top = 141.0
 margin_right = 255.0
@@ -53,12 +56,16 @@ margin_right = 108.0
 margin_bottom = 24.0
 text = "Fullscreen"
 
+[node name="UiSoundPack3" parent="VBoxContainer/HBoxContainer/CheckFullscreen" instance=ExtResource( 3 )]
+
 [node name="CheckRetroFilter" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
 margin_left = 112.0
 margin_right = 240.0
 margin_bottom = 24.0
 pressed = true
 text = "Use Retro Filter"
+
+[node name="UiSoundPack2" parent="VBoxContainer/HBoxContainer/CheckRetroFilter" instance=ExtResource( 3 )]
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 205.0
@@ -78,6 +85,8 @@ margin_right = 255.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
+[node name="UiSoundPack" parent="VBoxContainer/HBoxContainer2/OptionMSAAFilter" instance=ExtResource( 3 )]
+
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 margin_top = 229.0
 margin_right = 255.0
@@ -95,17 +104,23 @@ margin_right = 241.0
 margin_bottom = 24.0
 text = "Glow Enabled"
 
+[node name="UiSoundPack" parent="VBoxContainer/PanelContainer/VBoxContainer/CheckGlow" instance=ExtResource( 3 )]
+
 [node name="CheckSSAO" type="CheckBox" parent="VBoxContainer/PanelContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 241.0
 margin_bottom = 52.0
 text = "SSAO Enabled"
 
+[node name="UiSoundPack2" parent="VBoxContainer/PanelContainer/VBoxContainer/CheckSSAO" instance=ExtResource( 3 )]
+
 [node name="CheckSSR" type="CheckBox" parent="VBoxContainer/PanelContainer/VBoxContainer"]
 margin_top = 56.0
 margin_right = 241.0
 margin_bottom = 80.0
 text = "Screen Space Reflections Enabled"
+
+[node name="UiSoundPack3" parent="VBoxContainer/PanelContainer/VBoxContainer/CheckSSR" instance=ExtResource( 3 )]
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
 margin_top = 327.0
@@ -118,6 +133,8 @@ margin_top = 363.0
 margin_right = 255.0
 margin_bottom = 383.0
 text = "Apply Settings"
+
+[node name="UiSoundPack" parent="VBoxContainer/BtnApply" instance=ExtResource( 3 )]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 margin_left = 267.0

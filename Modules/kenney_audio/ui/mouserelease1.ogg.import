@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mouserelease1.ogg-6b00db57766710dee058d1b87e70d33f.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

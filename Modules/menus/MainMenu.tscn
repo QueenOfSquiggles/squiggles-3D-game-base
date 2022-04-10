@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Modules/menus/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Modules/menus/OptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Modules/menus/BtnSocial.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GameDefinitions/testing/ModernHouseBlockout.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Modules/menus/CreditsMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Modules/menus/theming/basic_theme.tres" type="Theme" id=6]
+[ext_resource path="res://Modules/menus/ui_sounds/UiSoundPack.tscn" type="PackedScene" id=7]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 6 )
 script = ExtResource( 1 )
 game_scene_path = ExtResource( 4 )
 options_menu = ExtResource( 2 )
@@ -28,90 +31,108 @@ margin_right = 205.0
 margin_bottom = -29.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameButtons"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 168.0
-margin_bottom = 202.0
+margin_left = 3.75238
+margin_top = 3.59834
+margin_right = 171.402
+margin_bottom = 205.402
 custom_constants/separation = 10
 
 [node name="BtnContinue" type="Button" parent="GameButtons/VBoxContainer"]
-margin_right = 161.0
-margin_bottom = 27.0
+margin_right = 167.0
+margin_bottom = 28.0
 size_flags_vertical = 3
 text = "Continue"
 
+[node name="UiSoundPack" parent="GameButtons/VBoxContainer/BtnContinue" instance=ExtResource( 7 )]
+
 [node name="Control" type="Control" parent="GameButtons/VBoxContainer"]
-margin_top = 37.0
-margin_right = 161.0
-margin_bottom = 47.0
+margin_top = 38.0
+margin_right = 167.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="BtnNewGame" type="Button" parent="GameButtons/VBoxContainer"]
-margin_top = 57.0
-margin_right = 161.0
-margin_bottom = 84.0
+margin_top = 58.0
+margin_right = 167.0
+margin_bottom = 86.0
 size_flags_vertical = 3
 text = "New Game"
 
+[node name="UiSoundPack2" parent="GameButtons/VBoxContainer/BtnNewGame" instance=ExtResource( 7 )]
+
 [node name="BtnOptions" type="Button" parent="GameButtons/VBoxContainer"]
-margin_top = 94.0
-margin_right = 161.0
-margin_bottom = 121.0
+margin_top = 96.0
+margin_right = 167.0
+margin_bottom = 124.0
 size_flags_vertical = 3
 text = "Options"
 
+[node name="UiSoundPack3" parent="GameButtons/VBoxContainer/BtnOptions" instance=ExtResource( 7 )]
+
 [node name="BtnCredits" type="Button" parent="GameButtons/VBoxContainer"]
-margin_top = 131.0
-margin_right = 161.0
-margin_bottom = 158.0
+margin_top = 134.0
+margin_right = 167.0
+margin_bottom = 162.0
 size_flags_vertical = 3
 text = "Credits"
 
+[node name="UiSoundPack4" parent="GameButtons/VBoxContainer/BtnCredits" instance=ExtResource( 7 )]
+
 [node name="BtnQuit" type="Button" parent="GameButtons/VBoxContainer"]
-margin_top = 168.0
-margin_right = 161.0
-margin_bottom = 195.0
+margin_top = 172.0
+margin_right = 167.0
+margin_bottom = 201.0
 size_flags_vertical = 3
 text = "Quit"
+
+[node name="UiSoundPack5" parent="GameButtons/VBoxContainer/BtnQuit" instance=ExtResource( 7 )]
 
 [node name="Socials" type="PanelContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -260.0
-margin_top = -81.0
-margin_right = -13.0
-margin_bottom = -17.0
+margin_left = -313.0
+margin_top = -76.0
+margin_right = -11.6493
+margin_bottom = -12.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Socials"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 240.0
-margin_bottom = 57.0
+margin_left = 3.75238
+margin_top = 3.59834
+margin_right = 297.752
+margin_bottom = 60.4017
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Socials/VBoxContainer"]
-margin_right = 233.0
+margin_right = 294.0
 margin_bottom = 32.0
 alignment = 1
 
 [node name="Twitter" parent="Socials/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 95.0
+margin_right = 127.0
 URI = "https://twitter.com/OfSquiggles"
 
+[node name="UiSoundPack6" parent="Socials/VBoxContainer/HBoxContainer/Twitter" instance=ExtResource( 7 )]
+
 [node name="Youtube" parent="Socials/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 100.0
-margin_right = 132.0
+margin_left = 131.0
+margin_right = 163.0
 URI = "https://www.youtube.com/channel/UCIh0Th1EBpFlvcKYWld0OsQ"
 
+[node name="UiSoundPack7" parent="Socials/VBoxContainer/HBoxContainer/Youtube" instance=ExtResource( 7 )]
+
 [node name="ItchIO" parent="Socials/VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 136.0
-margin_right = 168.0
+margin_left = 167.0
+margin_right = 199.0
 URI = "https://queenofsquiggles.itch.io/"
+
+[node name="UiSoundPack8" parent="Socials/VBoxContainer/HBoxContainer/ItchIO" instance=ExtResource( 7 )]
 
 [node name="Label" type="Label" parent="Socials/VBoxContainer"]
 margin_top = 36.0
-margin_right = 233.0
-margin_bottom = 50.0
+margin_right = 294.0
+margin_bottom = 53.0
 text = "A game by QueenOfSquiggles (2022)"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
