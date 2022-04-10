@@ -288,3 +288,35 @@ func delete_dir(path : String) -> void:
 		_err = dir.remove(file)
 	_err = dir.remove(path)
 
+func save_generic(file_path : String, data : Dictionary) -> int:
+	if not data:
+		return ERR_INVALID_DATA
+	var file := File.new()
+	var err := file.open(file_path, File.WRITE)
+	if err != OK:
+		return err
+	var text := JSON.print(data, "\t", true)
+	file.store_string(text)
+	file.close()
+	return OK
+
+func load_generic(file_path : String) -> Dictionary:
+	var file := File.new()
+	var err := file.open(file_path, File.READ)
+	if err != OK:
+		return {}
+	var text : String = file.get_as_text()
+	if not text:
+		return {}
+		
+	return JSON.parse(text).result as Dictionary
+
+func delete_generic(file_path : String) -> int:
+	var file := File.new()
+	if file.file_exists(file_path):
+		var dir := Directory.new()
+		var err = dir.open(file_path.get_base_dir())
+		if err != OK:
+			return err
+		return dir.remove(file_path.get_file())
+	return OK

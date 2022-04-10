@@ -5,3 +5,4 @@ func _ready() -> void:
 
 func _on_SubtitlesEnable_toggled(button_pressed: bool) -> void:
 	Settings.subtitles_enabled = button_pressed
+	Settings.reload_settings()

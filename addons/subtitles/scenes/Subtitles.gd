@@ -55,9 +55,12 @@ func add_subtitle(sub_data : Node, audio_stream : Node) -> void:
 
 func clear_subtitles() -> void:
 	print("Clearing subtitles")
-	layer_3D.clear()
-	layer_2D.clear()
-	layer_dialogue.clear()
+	if layer_3D:
+		layer_3D.clear()
+	if layer_2D:
+		layer_2D.clear()
+	if layer_dialogue:
+		layer_dialogue.clear()
 
 func hide() -> void:
 	layer_3D.set_visible(false)
