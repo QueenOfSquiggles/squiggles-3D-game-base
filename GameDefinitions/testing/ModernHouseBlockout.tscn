@@ -512,4 +512,4 @@ depth = 461.181
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 230.265, 27.1715, 269.164 )
 
 [node name="xbot_idle_simple" parent="AnimTests" instance=ExtResource( 17 )]
-transform = Transform( 0.264159, 0, 0.964479, 0, 1, 0, -0.964479, 0, 0.264159, 0, 0, 0 )
+transform = Transform( 0.198119, 0, 0.723359, 0, 0.75, 0, -0.723359, 0, 0.198119, 0, 0, 0 )
