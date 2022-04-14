@@ -20,6 +20,7 @@ enum StaticStyle {
 export (RigidModeStart) var rigid_mode_start := RigidModeStart.RIGID_UNTIL_PICKUP
 export (StaticStyle) var static_mode_style := StaticStyle.ONLY_AFTER_DROPPED
 export (bool) var keep_rotation := true
+export (float) var drop_throw_strength := 500.0
 export (String) var sfx_impact := "impact"
 export (String) var sfx_pickup := "pickup"
 export (String) var sfx_drop := "drop"
@@ -46,7 +47,7 @@ func interact(player : FirstPersonCharacterBase) -> void:
 	player.set_held_item(self)
 
 func use_item(player : FirstPersonCharacterBase) -> void:
-	player.set_held_item(null) # should call the remove_item func
+	player.set_held_item(null)
 
 func pickup_item(_player : FirstPersonCharacterBase) -> void:
 	is_being_held = true
@@ -57,7 +58,7 @@ func pickup_item(_player : FirstPersonCharacterBase) -> void:
 	if audio_lib:
 		audio_lib.play(sfx_pickup)
 
-func remove_item(_player : FirstPersonCharacterBase) -> void:
+func remove_item(player : FirstPersonCharacterBase) -> void:
 	is_being_held = false
 	set_as_toplevel(true)
 	var glob_rot := self.rotation
@@ -66,13 +67,22 @@ func remove_item(_player : FirstPersonCharacterBase) -> void:
 	get_parent().remove_child(self)
 	original_parent.add_child(self)
 	self.global_transform = trans
-	self.rotation = glob_rot # retain held item rotation?
+	self.rotation = glob_rot
 	self.mode = RigidBody.MODE_RIGID
 	self.collision_layer = original_collision_layer
 	self.collision_mask = original_collision_mask
 	has_been_dropped_before = true
+	
+	# - - - - - - - - - - - -
+	# attempt to create thrown effect
+	var delta :Vector3 = (global_transform.origin - player.global_transform.origin).normalized()
+	var throw := delta * drop_throw_strength
+	call_deferred("add_central_force", throw)
+	# - - - - - - - - - - - -
+	
 	if audio_lib:
 		audio_lib.play(sfx_drop)
+	
 
 func _on_sleeping_state_changed() -> void:
 	if self.sleeping:

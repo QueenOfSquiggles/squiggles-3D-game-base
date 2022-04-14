@@ -349,4 +349,3 @@ quality/voxel_cone_tracing/high_quality=true
 quality/filters/msaa=1
 quality/filters/use_fxaa=true
 quality/filters/use_debanding=true
-environment/default_environment="res://default_env.tres"

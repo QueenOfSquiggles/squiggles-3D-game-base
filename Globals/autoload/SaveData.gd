@@ -169,7 +169,7 @@ func save_data() -> void:
 		return
 
 	var scene_objects := get_persistant_objs()
-	print("Saving data for ", scene_objects.size(), " persistent objects")
+	#print("Saving data for ", scene_objects.size(), " persistent objects")
 	for i in range(scene_objects.size()):
 		var obj := scene_objects[i] as Node
 		var data := get_save_data_for(obj)

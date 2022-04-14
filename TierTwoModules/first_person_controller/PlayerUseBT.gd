@@ -6,14 +6,28 @@ onready var anim_player := $AnimationPlayer
 onready var held_item_root := $Pivot/Camera/held_object
 onready var selection_raycast : InteractionRayCast = $"Pivot/Camera/SelectionCast"
 
+var anim_queue := []
+
+func _ready() -> void:
+	var _clear = anim_player.connect("animation_finished", self, "_on_anim_done")
+
 func _physics_process(delta: float) -> void:
 	bt.tick_tree(delta)
 
 func play_animation(anim : String) -> void:
-	anim_player.stop()
-	anim_player.play(anim)
+	if anim_player.is_playing():
+		anim_queue.push_back(anim)
+	else:
+		anim_player.stop()
+		anim_player.play(anim)
 
-func set_held_item(item : Spatial) -> void:
+func _on_anim_done() -> void:
+	if not anim_player.get_animation(anim_player.current_animation).loop:
+		var next := anim_queue.pop_front() as String
+		if next and not next.empty():
+			anim_player.play(next)
+
+func set_held_item(item : Spatial = null) -> void:
 	if held_item_root.get_child_count() > 0:
 		var cur_item := held_item_root.get_child(0)
 		if cur_item and cur_item.has_method("remove_item"):
@@ -24,4 +38,9 @@ func set_held_item(item : Spatial) -> void:
 		held_item_root.add_child(item)
 		if item.has_method("pickup_item"):
 			item.pickup_item(self)
+	else:
+		play_animation("after_drop_item")
 
+func set_global_lock(is_locked : bool) -> void:
+	Globals.player_occupied = is_locked
+	print("Player was set as occupied=%s" % str(is_locked))

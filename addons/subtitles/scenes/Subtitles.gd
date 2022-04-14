@@ -54,7 +54,6 @@ func add_subtitle(sub_data : Node, audio_stream : Node) -> void:
 		layer_dialogue.add_subtitle(audio_stream, sub_data, theme_override)
 
 func clear_subtitles() -> void:
-	print("Clearing subtitles")
 	if layer_3D:
 		layer_3D.clear()
 	if layer_2D:

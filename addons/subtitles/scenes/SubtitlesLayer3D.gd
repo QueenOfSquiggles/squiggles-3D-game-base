@@ -19,7 +19,6 @@ func _ready() -> void:
 func _cache_viewport_size() -> void:
 	var viewport := get_tree().root.get_viewport()
 	_viewport_size_cache = viewport.size
-	print("Cached viewport size : ", _viewport_size_cache)
 
 func _process(_delta : float) -> void:
 	_update_subtitles() 
@@ -27,7 +26,6 @@ func _process(_delta : float) -> void:
 func _update_subtitles() -> void:
 	var viewport := get_tree().root.get_viewport()
 	var cam := viewport.get_camera()
-	#print("updating subtitles")
 	for c in get_children():
 		if not is_instance_valid(c) or not c is PanelContainer:
 			# skip any invalid nodes or extras
@@ -43,6 +41,7 @@ func _update_subtitle_position(panel : PanelContainer, cam : Camera) -> void:
 		var position : Spatial = _position_mapping[panel.name]
 		if not is_instance_valid(position):
 			panel.queue_free()
+			return
 		var pos_calc := cam.unproject_position(position.global_transform.origin)
 		pos_calc = _apply_cam_angles(cam, position, pos_calc, panel)
 		panel.rect_position = _clamp_subtitle_pos(panel, pos_calc)
