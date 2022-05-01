@@ -21,8 +21,10 @@ func play_animation(anim : String) -> void:
 		anim_player.stop()
 		anim_player.play(anim)
 
-func _on_anim_done() -> void:
-	if not anim_player.get_animation(anim_player.current_animation).loop:
+func _on_anim_done(anim_name : String) -> void:
+	if anim_name == "RESET":
+		return
+	if not anim_player.get_animation(anim_name).loop and not anim_queue.empty():
 		var next := anim_queue.pop_front() as String
 		if next and not next.empty():
 			anim_player.play(next)
@@ -38,8 +40,6 @@ func set_held_item(item : Spatial = null) -> void:
 		held_item_root.add_child(item)
 		if item.has_method("pickup_item"):
 			item.pickup_item(self)
-	else:
-		play_animation("after_drop_item")
 
 func set_global_lock(is_locked : bool) -> void:
 	Globals.player_occupied = is_locked
